@@ -1,28 +1,31 @@
 <template lang="pug">
 .site
-  p this is the site!
-  el-button(
-    plain
-
-    @click="click"
-  ) button
-  el-calendar
+  el-container.site-container
+    site-header
+    site-main
+    site-footer
 </template>
 
 <script>
+import SiteHeader from '@/components/site/SiteHeader.vue';
+import SiteMain from '@/components/site/SiteMain.vue';
+import SiteFooter from '@/components/site/SiteFooter.vue';
+
 export default {
   name: 'site-view',
   components: {
+    SiteHeader,
+    SiteMain,
+    SiteFooter,
   },
   methods: {
-    click(e) {
-      console.log(e);
-    },
   },
 };
 </script>
 
 <style lang="stylus" scoped>
 .site
-  color pink
+  &-container
+    display grid
+    grid-template-rows 60px calc(100vh - 120px) 60px
 </style>
