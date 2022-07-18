@@ -1,7 +1,7 @@
 <template lang="pug">
 el-main.main
   .main-inner
-    | main
+    router-view
 </template>
 
 <style lang="stylus" scoped>
