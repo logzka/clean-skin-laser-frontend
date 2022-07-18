@@ -28,7 +28,9 @@ nav.header-nav-menu
         li.header-nav-menu__list-item
             router-link.header-nav-menu__list-item_admin(
                 to="/admin"
-                ) Для администратора
+                ) Для администратора&nbsp;|
+                el-icon(style="margin-left: 2.8px;position: absolute;")
+                    Avatar
 </template>
 
 <script>
