@@ -2,7 +2,7 @@
   "name": "clean-skin-laser",
   "version": "0.1.0",
   "engines": {
-    "node": "16.13"
+    "node": "12.13"
   },
   "private": true,
   "scripts": {
