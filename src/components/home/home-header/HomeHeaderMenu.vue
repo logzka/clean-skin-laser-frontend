@@ -61,14 +61,14 @@ export default {
                 margin-right -15px
             &_admin
                 // background #849FBB
-                color #2CC990
+                color #9684A3
                 font-weight bold
             .router-link-active.router-link-exact-active
                 color white
-            &:nth-child(odd)
+            &:nth-child(even)
                 .router-link-active.router-link-exact-active
                     background #2CC990
-            &:nth-child(even)
+            &:nth-child(odd)
                 .router-link-active.router-link-exact-active
                     background #9684A3
 </style>
