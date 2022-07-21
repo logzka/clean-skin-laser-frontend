@@ -1,6 +1,6 @@
 <template lang="pug">
 el-header.home-header
-  .home-header-inner
+  .home-header-inner.flex.space-between.align-center
     router-link.home-header__logo(
         to="/"
     ) CS Laser Studio
@@ -32,9 +32,6 @@ export default {
     z-index 999
     &-inner
         padding 12px 0
-        display flex
-        justify-content space-between
-        align-items center
     &__logo
       font-weight bold
       background linear-gradient(-60deg, #2CC990, #2CC990, #9684A3,  #9684A3)

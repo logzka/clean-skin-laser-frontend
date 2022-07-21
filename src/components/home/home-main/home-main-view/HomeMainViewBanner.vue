@@ -1,12 +1,12 @@
 <template lang="pug">
-.home-main-banner
-    .home-main-banner__mosaic
-        .home-main-banner__mosaic-item(
-            v-for="item in 9"
+.home-main-view-banner
+    .home-main-view-banner__mosaic
+        .home-main-view-banner__mosaic-item(
+            v-for="item in 16"
             :key="item"
             )
             //- | {{ item }}
-    .home-main-banner__inner
+    .home-main-view-banner__inner
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default {
 $banner-height = 195px
 $banner-width = 500px
 
-.home-main-banner
+.home-main-view-banner
     height $banner-height
     width $banner-width
     position relative
@@ -45,27 +45,48 @@ $banner-width = 500px
                 right -16px
                 top -20px
             &:nth-child(2)
-                right 56px
+                right 34px
                 top -6px
             &:nth-child(3)
                 right 34px
-                top 148px
+                top 46px
             &:nth-child(4)
-                right 74px
-                top 68px
+                right 84px
+                top 36px
             &:nth-child(5)
-                right 134px
+                right 84px
                 top -14px
             &:nth-child(6)
-                right -8px
-                top 74px
+                right -16px
+                top 30px
             &:nth-child(7)
+                right 34px
+                top 96px
+            &:nth-child(8)
+                right -16px
+                top 80px
+            &:nth-child(9)
                 left -18px
                 bottom -10px
-            &:nth-child(8)
-                left -4px
-                bottom 66px
-            &:nth-child(9)
-                left 62px
-                bottom 14px
+            &:nth-child(10)
+                left 32px
+                bottom 28px
+            &:nth-child(11)
+                left 32px
+                bottom -22px
+            &:nth-child(12)
+                left -18px
+                bottom 40px
+            &:nth-child(13)
+                left 82px
+                bottom -2px
+            &:nth-child(14)
+                left 32px
+                bottom 78px
+            &:nth-child(15)
+                left 82px
+                bottom 48px
+            &:nth-child(16)
+                left -18px
+                bottom 90px
 </style>

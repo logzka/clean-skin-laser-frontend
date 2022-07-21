@@ -1,6 +1,6 @@
 <template lang="pug">
 nav.header-nav-menu
-    ul.header-nav-menu__list
+    ul.header-nav-menu__list.flex.space-between.align-center
         li.header-nav-menu__list-item
             router-link(
                 to="/calendar"
@@ -28,9 +28,10 @@ nav.header-nav-menu
         li.header-nav-menu__list-item
             router-link.header-nav-menu__list-item_admin(
                 to="/admin"
-                ) Для администратора&nbsp;|
-                el-icon(style="margin-left: 2.8px;position: absolute;")
-                    Avatar
+                ) Для администратора
+                //- &nbsp;|
+                //- el-icon(style="margin-left: 2.8px;position: absolute;")
+                //-     Avatar
 </template>
 
 <script>
@@ -46,9 +47,6 @@ export default {
 <style lang="stylus" scoped>
 .header-nav-menu
     &__list
-        display flex
-        justify-content space-between
-        align-items center
         &-item
             margin-right 15px
             cursor pointer

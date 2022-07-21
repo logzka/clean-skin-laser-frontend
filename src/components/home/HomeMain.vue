@@ -2,32 +2,49 @@
 el-main.home-main
   .home-main-inner
 
-    h1.home-main-inner__title Clean Skin Laser Studio
-
     .home-main-inner__view(v-if="$route.path === '/'")
 
-      div.home-main-inner__view-content
-        p.home-main-inner__view-text {{ text }}
+      .home-main-inner__view-title.flex.space-between.align-center
+        h1 Clean Skin Laser Studio
+        a.b(
+          href="#"
+          target="_blank"
+          ) Instagram
 
-        .home-main-inner__view-buttons
-          el-button.green Записаться
-          el-button.purple Акции
+      section.flex.space-between.f-wrap(style="margin-bottom: 120px;")
 
-      home-main-banner
+        .home-main-inner__view-content.flex.f-col.space-between.align-start
+          .home-main-inner__view-content_text
+            h2 Сведение/осветление татуировок
+            h2 Удаление татуажа бровей, губ
+            h2 Эпиляция
+            h2 Карбоновый пиллинг
+
+          .home-main-inner__view-content_buttons.flex
+            el-button.green(style="margin-right: 20px;") Записаться
+            el-button.purple Акции
+
+        .home-main-inner__view-banner
+          home-main-view-banner
+
+      section.home-main-inner__view-advantages
+        home-main-view-advantages
 
     router-view(v-else)
 </template>
 
 <script>
-import HomeMainBanner from './home-main/HomeMainBanner.vue';
+import HomeMainViewBanner from './home-main/home-main-view/HomeMainViewBanner.vue';
+import HomeMainViewAdvantages from './home-main/home-main-view/HomeMainViewAdvantages.vue';
 
 export default {
   components: {
-    HomeMainBanner,
+    HomeMainViewBanner,
+    HomeMainViewAdvantages,
   },
 
   data: () => ({
-    text: 'Безусловно, глубокий уровень погружения позволяет оценить значение направлений прогрессивного развития. Прежде всего, современная методология разработки способствует повышению качества благоприятных перспектив.',
+    text: 'Добро пожаловать в нашу студию лазерной косметологии',
   }),
 };
 </script>
@@ -36,31 +53,24 @@ export default {
 $banner-height = 195px;
 
 .home-main
-  --el-main-padding 20px
+  --el-main-padding 80px 20px
   width 1130px
   margin 0 auto
   &-inner
-    &__title
-      margin-bottom 40px
     &__view
-      display flex
-      justify-content: space-between;
-      align-items flex-end
-      flex-wrap wrap
-
+      &-title
+        margin-bottom 40px
+        a
+          color #2CC990
       &-content
         max-width 45%
         height $banner-height
-        display flex
-        flex-direction column
-        justify-content space-between
-        align-items flex-start
+        h2
+          font-size 15px
+          font-weight normal
+          margin-bottom 5px
+        // &_text
+        // &_buttons
 
-      &-text
-        line-height 1.5
-        // text-indent 25px
-        margin 0
-      &-buttons
-        display flex
-        justify-content space-between
+      // &-advantages
 </style>

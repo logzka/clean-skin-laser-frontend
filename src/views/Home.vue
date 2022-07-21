@@ -1,6 +1,6 @@
 <template lang="pug">
 .home
-  el-container.home-container
+  el-container.home-container.grid
     home-header
     home-main
     home-footer
@@ -26,7 +26,6 @@ export default {
 <style lang="stylus" scoped>
 .home
   &-container
-    display grid
     grid-template-rows auto 1fr auto
     min-height 100vh
 </style>
