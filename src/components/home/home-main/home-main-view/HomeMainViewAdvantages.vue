@@ -17,7 +17,7 @@
                 ) Качественное оборудование
                     br
                     | компании&nbsp;
-                    span.lasertech-link LaserTech
+                    span.lasertech-link Lasertech
 
     .home-main-view-advantages_item.flex.f-col.align-center
         el-icon.home-main-view-advantages_item-icon
@@ -41,8 +41,8 @@ export default {
 .home-main-view-advantages
     &_item
         margin-right 10%
-        &:last-item
-            margin-right -10%
+        &:last-child
+            margin-right 0
         &-icon
             font-size 48px
             margin-bottom 20px

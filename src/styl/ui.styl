@@ -3,6 +3,7 @@ button.el-button
   min-width 148px
   &.purple
     --el-border-color #9684A3
+    --el-button-border-color #9684A3
     --el-button-hover-text-color #9684A3
     --el-button-bg-color #9684A3
     --el-button-hover-border-color #9684A3
@@ -15,6 +16,7 @@ button.el-button
       box-shadow none
   &.green
     --el-border-color #2CC990
+    --el-button-border-color #2CC990
     --el-button-hover-text-color #2CC990
     --el-button-bg-color #2CC990
     --el-button-hover-border-color #2CC990
@@ -25,3 +27,72 @@ button.el-button
     box-shadow var(--el-box-shadow-light)
     &:hover
       box-shadow none
+  &--text
+    color $regular
+    &:not(.is-disabled):focus
+    &:not(.is-disabled):hover
+        color $regular
+
+
+/** UI Form */
+.el-form
+    &-item
+        align-items center
+        &__label
+            align-items center
+
+/** UI Input */
+.el-input
+    --el-input-focus-border #9684A3
+    --el-input-focus-border-color #9684A3
+
+/** UI Select */
+.select-trigger
+    --el-select-input-focus-border-color #9684A3
+
+.el-select-dropdown
+    &__list
+        --el-menu-hover-text-color #9684A3
+    &__item
+        --el-menu-item-hover-fill #9684A3
+        --el-menu-active-color #9684A3
+        --el-menu-hover-bg-color #9684A3
+        &.hover
+            background-color rgba(#9684A3, .1)
+        &.selected
+            color #9684A3
+
+/** UI Switch */
+.el-switch
+    &.is-checked
+        .el-switch__core
+            background-color #9684A3
+            border-color #9684A3
+
+/** UI Checkbox */
+.el-checkbox
+    &__input
+        border-color #9684A3
+        &.is-checked
+            .el-checkbox__inner
+                background-color #9684A3
+                border-color #9684A3
+    &__inner
+        &:hover
+            border-color #9684A3
+
+    &.is-checked > &__label
+        color #9684A3
+
+/** UI Textarea */
+.el-textarea
+    --el-input-focus-border-color #9684A3
+
+/** UI DatePicker */
+.el-date-picker
+    --el-datepicker-active-color #9684A3
+    --el-datepicker-hover-text-color #9684A3
+    --el-menu-active-color #9684A3
+
+    .el-date-table td.today .el-date-table-cell__text
+        color #2CC990
