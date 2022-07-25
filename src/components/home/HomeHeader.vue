@@ -5,7 +5,10 @@ el-header.home-header
         to="/"
     ) CS Laser Studio
     home-header-menu
-    el-button.green Связаться
+    el-button.green
+      a(
+        href="tel:+79604867349"
+        ) Позвонить
 </template>
 
 <script>

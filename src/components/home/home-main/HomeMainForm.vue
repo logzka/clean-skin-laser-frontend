@@ -34,7 +34,7 @@
       )
       el-select(
         v-model="ruleForm.region"
-        placeholder="Город, в котором желаете провести процедуру"
+        placeholder="Укажите город"
         size="large"
         )
         el-option(
@@ -47,12 +47,12 @@
           )
 
     el-form-item(
-      label="Какое время Вам было бы удобно?"
+      label="Когда Вам было бы удобно?"
       required
       )
-      el-col(:span="24")
+      el-col(:span="12")
         el-form-item(
-          prop="date1"
+          prop="date"
           )
           el-date-picker.w-100(
             v-model="ruleForm.date"
@@ -122,10 +122,6 @@
         size="large"
         @click="submitForm()"
         ) Отправить
-      el-button(
-        type="text"
-        @click="resetForm()"
-        ) Сбросить
 </template>
 
 <script>
@@ -181,7 +177,7 @@ export default {
       region: '',
       phone: '',
       date: '',
-      time: '',
+      // time: '',
       callback: false,
       type: [],
       desc: '',

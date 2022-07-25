@@ -7,9 +7,6 @@ el-main.home-main
       .home-main-inner__view-title.flex.space-between.align-center
         h1 Clean Skin Laser Studio
         a.b(
-          href="tel:+79604867349"
-          ) +7 960 486 7349
-        //- a.b(
           href="#"
           target="_blank"
           ) Instagram
@@ -24,7 +21,11 @@ el-main.home-main
             h2 Карбоновый пиллинг
 
           .home-main-inner__view-content_buttons.flex
-            el-button.green(style="margin-right: 20px;" size="large") Записаться
+            el-button.green(
+              style="margin-right: 20px;"
+              size="large"
+              @click="dialogVisible = true"
+              ) Записаться
             el-button.purple(size="large") Акции
 
         .home-main-inner__view-banner
@@ -33,8 +34,12 @@ el-main.home-main
       section.home-main-inner__view-advantages
         home-main-view-advantages
 
-      section.home-main-inner__view-form
+      section.home-main-inner__view-form#form
         home-main-form
+
+      home-main-dialog(
+        v-model="dialogVisible"
+        )
 
     router-view(v-else)
 </template>
@@ -43,16 +48,19 @@ el-main.home-main
 import HomeMainViewBanner from './home-main/home-main-view/HomeMainViewBanner.vue';
 import HomeMainViewAdvantages from './home-main/home-main-view/HomeMainViewAdvantages.vue';
 import HomeMainForm from './home-main/HomeMainForm.vue';
+import HomeMainDialog from './home-main/HomeMainDialog.vue';
 
 export default {
   components: {
     HomeMainViewBanner,
     HomeMainViewAdvantages,
     HomeMainForm,
+    HomeMainDialog,
   },
 
   data: () => ({
     text: 'Добро пожаловать в нашу студию лазерной косметологии',
+    dialogVisible: false,
   }),
 };
 </script>
