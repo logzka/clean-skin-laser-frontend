@@ -1,6 +1,5 @@
 <template lang="pug">
 el-footer.home-footer(
-  height="60px"
   )
   .home-footer-inner
     | Футер
@@ -10,6 +9,7 @@ el-footer.home-footer(
 .home-footer
   background-image linear-gradient(45deg, #2CC990, #9684A3)
   color #EDF9FF
+  --el-footer-height auto
   &-inner
     padding 20px 0
 </style>

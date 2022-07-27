@@ -1,11 +1,15 @@
 <template lang="pug">
 el-header.home-header
-  .home-header-inner.flex.space-between.align-center
+  .home-header-inner.h-100.flex.space-between.align-center
     router-link.home-header__logo(
         to="/"
     ) CS Laser Studio
+
     home-header-menu
-    el-button.green Связаться
+
+    a.el-button.el-button--success.el-button--large(
+        href="tel:+79604867349"
+        ) Позвонить
 </template>
 
 <script>
@@ -20,6 +24,7 @@ export default {
 
 <style lang="stylus" scoped>
 .home-header
+    --el-header-height 100px
     border-bottom 4px solid transparent
     border-image linear-gradient(#2CC990, #9684A3)
     -moz-border-image -moz-linear-gradient(#2CC990, #9684A3)
@@ -27,8 +32,9 @@ export default {
     border-image-slice 1
     position sticky
     top 0
-    background rgba(#fff, .6)
+    background rgba(#fff, .8)
     backdrop-filter blur(10px)
+
     z-index 999
     &-inner
         padding 12px 0

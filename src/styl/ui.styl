@@ -1,27 +1,24 @@
 /** UI Buttons */
-button.el-button
-  min-width 148px
-  &.purple
-    --el-border-color #9684A3
-    --el-button-hover-text-color #9684A3
-    --el-button-bg-color #9684A3
-    --el-button-hover-border-color #9684A3
-    --el-button-text-color #fff
-    --el-button-hover-bg-color #fff
-    transition all .2s ease
+.el-button
+    min-width 148px
     border-radius var(--el-border-radius-small)
-    box-shadow var(--el-box-shadow-light)
     &:hover
-      box-shadow none
-  &.green
-    --el-border-color #2CC990
-    --el-button-hover-text-color #2CC990
-    --el-button-bg-color #2CC990
-    --el-button-hover-border-color #2CC990
-    --el-button-text-color #fff
-    --el-button-hover-bg-color #fff
-    transition all .2s ease
-    border-radius var(--el-border-radius-small)
-    box-shadow var(--el-box-shadow-light)
-    &:hover
-      box-shadow none
+        box-shadow var(--el-box-shadow-light)
+    &--text
+        color $regular
+        &:not(.is-disabled):focus
+        &:not(.is-disabled):hover
+            color $regular
+
+
+/** UI Form */
+.el-form
+    &-item
+        align-items center
+        &__label
+            align-items center
+
+/** UI DatePicker */
+.el-date-picker
+    .el-date-table td.today .el-date-table-cell__text
+        color #2CC990
