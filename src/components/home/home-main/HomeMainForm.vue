@@ -65,17 +65,6 @@
       el-col.text-center(:span="2")
         span.text-gray-500
 
-      //- el-col(:span="11")
-        el-form-item(
-          prop="date2"
-          )
-          el-time-picker.w-100(
-            v-model="ruleForm.time"
-            label="Пожалуйста, укажите время"
-            placeholder="Выберите время"
-            size="large"
-          )
-
     el-form-item(
       label="Перезвонить в течение часа"
       prop="callback"
@@ -118,8 +107,10 @@
         )
 
     el-form-item
-      el-button.green(
+      el-button(
         size="large"
+        type="success"
+        plain
         @click="submitForm()"
         ) Отправить
 </template>
@@ -144,22 +135,6 @@ const rules = {
       trigger: 'change',
     },
   ],
-  // date: [
-  //   {
-  //     type: 'date',
-  //     required: true,
-  //     message: 'Пожалуйста, укажите дату',
-  //     trigger: 'change',
-  //   },
-  // ],
-  // time: [
-  //   {
-  //     type: 'date',
-  //     required: true,
-  //     message: 'Пожалуйста, укажите дату',
-  //     trigger: 'change',
-  //   },
-  // ],
   type: [
     {
       type: 'array',
@@ -216,16 +191,8 @@ export default {
 
 <style lang="stylus" scoped>
 .home-main-form
-  border 4px solid #9684A3
-  border-radius 2px
-  border-image linear-gradient(#2CC990, #9684A3)
-  -moz-border-image -moz-linear-gradient(#2CC990, #9684A3)
-  -webkit-border-image -webkit-linear-gradient(45deg, #2CC990, #9684A3)
-  border-image-slice 1
-  color #fff
-  padding 60px 0
+  background #fff
   .el-form
-    max-width 75%
     margin 0 auto
     &-item
       &:not(&:last-child)

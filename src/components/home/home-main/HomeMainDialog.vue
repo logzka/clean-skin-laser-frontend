@@ -21,6 +21,14 @@ export default {
 
 <style lang="stylus">
 .el-dialog
+    &__header
+        padding 40px 60px 0px
+    &__title
+        font-weight bold
+        color #9684A3
+    &__headerbtn
+        width 70px
+        height 90px
     &__body
-        padding 10px 20px 20px
+        padding 40px 60px
 </style>

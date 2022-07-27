@@ -21,12 +21,16 @@ el-main.home-main
             h2 Карбоновый пиллинг
 
           .home-main-inner__view-content_buttons.flex
-            el-button.green(
+            el-button(
               style="margin-right: 20px;"
               size="large"
+              type="success"
               @click="dialogVisible = true"
               ) Записаться
-            el-button.purple(size="large") Акции
+            el-button(
+              size="large"
+              type="primary"
+              ) Акции
 
         .home-main-inner__view-banner
           home-main-view-banner
@@ -34,8 +38,9 @@ el-main.home-main
       section.home-main-inner__view-advantages
         home-main-view-advantages
 
-      section.home-main-inner__view-form#form
-        home-main-form
+      section.home-main-inner__view-form
+        .home-main-inner__view-form_inner
+          home-main-form
 
       home-main-dialog(
         v-model="dialogVisible"
@@ -86,13 +91,17 @@ $banner-height = 195px;
           font-size 16px
           font-weight normal
           margin-bottom 7px
-          // color #9684A3
-        // &_text
-        // &_buttons
+          color #9684A3
 
       &-advantages
       // &-form
         margin-bottom 200px
 
-      // &-form
+      &-form
+        padding 4px
+        border-radius 2px
+        background-image -webkit-linear-gradient(45deg, #2CC990, #9684A3)
+        &_inner
+          background #fff
+          padding 60px 100px
 </style>
