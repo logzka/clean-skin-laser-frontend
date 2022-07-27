@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="stylus">
-$banner-height = 195px;
+$banner-height = 224px;
 
 .home-main
   --el-main-padding 80px 20px

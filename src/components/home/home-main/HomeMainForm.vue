@@ -106,10 +106,10 @@
         type="textarea"
         )
 
-    el-form-item
+    el-form-item(align="end")
       el-button(
         size="large"
-        type="success"
+        type="primary"
         plain
         @click="submitForm()"
         ) Отправить
