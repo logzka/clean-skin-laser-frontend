@@ -1,16 +1,77 @@
 <template lang="pug">
 el-footer.home-footer(
   )
-  .home-footer-inner
-    | Футер
+  .home-footer-inner.w-100.h-100.flex.space-between.align-center
+    .home-footer-inner__copy
+      h2 CS Laser Studio
+      | &copy;&nbsp;Все права защищены,&nbsp;2022
+
+    .home-footer-inner__menu
+      home-footer-menu
+
+    .home-footer-inner__social-info.h-100.flex.f-col.space-around
+      ul.home-footer-inner__social-info_list.flex
+        li.home-footer-inner__social-info_list-item
+          a(href="https://instagram.com/" target="_blank")
+            img(src="@/assets/social/white/instagram.svg")
+        li.home-footer-inner__social-info_list-item
+          a(href="/" target="_blank")
+            img(src="@/assets/social/white/telegram.svg")
+        li.home-footer-inner__social-info_list-item
+          a(href="https://vk.com/" target="_blank")
+            img(src="@/assets/social/white/vk.svg")
+
+      .home-footer-inner__social-info_phone
+        a(href="tel:+79604867349") +7 (960) 486 73 49
+
+      .home-footer-inner__social-info_address
+        el-icon
+          Location
+        span Krasnodar, ul. Krasnaya, 144
+
+    .home-footer-inner__buttons.flex.f-col
+      el-button(
+        type="info"
+        plain
+        @click="$router.push('/admin')"
+        ) Администратору
+      el-button.m-0(
+        type="info"
+        plain
+        @click="$router.push('/admin')"
+        ) Менеджеру
 </template>
+
+<script>
+import HomeFooterMenu from '@/components/home/home-footer/HomeFooterMenu.vue';
+
+export default {
+  components: {
+    HomeFooterMenu,
+  },
+};
+</script>
 
 <style lang="stylus" scoped>
 .home-footer
   background-image linear-gradient(45deg, #2CC990, #9684A3)
   color #EDF9FF
   --el-footer-height auto
-  --el-footer-padding 20px 40px
+  --el-footer-padding 40px
   &-inner
-    // padding 20px 0
+    &__buttons
+      .el-button:first-child
+        margin-bottom 15px
+
+    &__social-info
+      img
+        width 28px
+      &_list
+        &-item
+          margin-right 15px
+          &:last-child
+            margin-right 0px
+      &_address
+        .el-icon
+          margin-right 5px
 </style>

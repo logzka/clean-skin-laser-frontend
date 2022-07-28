@@ -6,10 +6,25 @@ el-main.home-main
 
       .home-main-inner__view-title.flex.space-between.align-center
         h1 Clean Skin Laser Studio
-        a.b(
-          href="#"
-          target="_blank"
-          ) Instagram
+        ul.home-main-inner__view-social_list.flex
+          li.home-main-inner__view-social_list-item
+            a(
+              href="https://instagram.com/"
+              target="_blank"
+              )
+              img(src="@/assets/social/color/instagram.svg")
+          li.home-main-inner__view-social_list-item
+            a(
+              href="/"
+              target="_blank"
+              )
+              img(src="@/assets/social/color/telegram.svg")
+          li.home-main-inner__view-social_list-item
+            a(
+              href="https://vk.com/"
+              target="_blank"
+              )
+              img(src="@/assets/social/color/vk.svg")
 
       section.flex.space-between.f-wrap(style="margin-bottom: 200px;")
 
@@ -89,8 +104,13 @@ $banner-height = 234px;
       &-title
         margin-bottom 40px
         color #9684A3
-        a
-          color #2CC990
+      &-social_list
+        &-item
+          margin-right 10px
+          &:last-child
+            margin-right 0px
+          img
+            width 28px
       &-content
         max-width 45%
         height $banner-height

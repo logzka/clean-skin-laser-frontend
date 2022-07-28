@@ -29,6 +29,8 @@ export default {
     &__headerbtn
         width 70px
         height 90px
+    &__headerbtn > &__close
+      color #9684A3
     &__body
         padding 40px 60px
 </style>

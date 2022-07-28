@@ -21,7 +21,7 @@
 
     el-form-item(
       label="Номер телефона"
-      prop="name"
+      prop="phone"
       )
       el-input(
         v-model="ruleForm.phone"
@@ -175,7 +175,7 @@ export default {
             type: 'success',
           });
 
-          // this.$refs.form.resetFields();
+          this.$refs.form.resetFields();
         } else {
           console.log('error submit!', fields);
 
