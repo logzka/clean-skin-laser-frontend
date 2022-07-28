@@ -25,6 +25,7 @@ export default {
 <style lang="stylus" scoped>
 .home-header
     --el-header-height 100px
+    --el-header-padding 0 40px
     border-bottom 4px solid transparent
     border-image linear-gradient(#2CC990, #9684A3)
     -moz-border-image -moz-linear-gradient(#2CC990, #9684A3)

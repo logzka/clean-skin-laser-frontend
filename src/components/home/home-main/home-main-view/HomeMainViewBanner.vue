@@ -2,7 +2,7 @@
 .home-main-view-banner
     .home-main-view-banner__mosaic
         .home-main-view-banner__mosaic-tile(
-            v-for="item in 8"
+            v-for="item in 21"
             :key="item"
 
             :style="getTileStyle(item)"
@@ -18,12 +18,12 @@ export default {
   methods: {
     getTileStyle(item) {
       const itemIndex = item - 1;
-      const indexTop = Math.floor(itemIndex / 4);
-      const indexLeft = item % 4;
+      const indexTop = Math.floor(itemIndex / 7);
+      const indexLeft = item % 7;
 
       return {
-        left: `${indexLeft * 112}px`,
-        top: `${indexTop * 112}px`,
+        left: `${indexLeft * 78}px`,
+        top: `${indexTop * 78}px`,
         'animation-delay': `${item * Math.random()}s`,
       };
     },
@@ -32,8 +32,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-$banner-height = 224px
-$banner-width = 448px
+$banner-width = 548px
+$banner-height = 234px
 
 .home-main-view-banner
     height $banner-height
@@ -49,8 +49,8 @@ $banner-width = 448px
         border-radius 2px
     &__mosaic
         &-tile
-            width 112px
-            height 112px
+            width 78px
+            height 78px
             border-radius 2px
             position absolute
             backdrop-filter blur(5px)

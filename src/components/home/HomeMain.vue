@@ -30,13 +30,16 @@ el-main.home-main
             el-button(
               size="large"
               type="primary"
-              ) Акции
+              ) Система абонементов
 
         .home-main-inner__view-banner
           home-main-view-banner
 
       section.home-main-inner__view-advantages
         home-main-view-advantages
+
+      section.home-main-inner__view-stocks
+        home-main-view-stocks
 
       section.home-main-inner__view-form
         .home-main-inner__view-form_inner
@@ -52,6 +55,8 @@ el-main.home-main
 <script>
 import HomeMainViewBanner from './home-main/home-main-view/HomeMainViewBanner.vue';
 import HomeMainViewAdvantages from './home-main/home-main-view/HomeMainViewAdvantages.vue';
+import HomeMainViewStocks from './home-main/home-main-view/HomeMainViewStocks.vue';
+
 import HomeMainForm from './home-main/HomeMainForm.vue';
 import HomeMainDialog from './home-main/HomeMainDialog.vue';
 
@@ -59,6 +64,8 @@ export default {
   components: {
     HomeMainViewBanner,
     HomeMainViewAdvantages,
+    HomeMainViewStocks,
+
     HomeMainForm,
     HomeMainDialog,
   },
@@ -71,7 +78,7 @@ export default {
 </script>
 
 <style lang="stylus">
-$banner-height = 224px;
+$banner-height = 234px;
 
 .home-main
   --el-main-padding 80px 20px
@@ -94,7 +101,7 @@ $banner-height = 224px;
           color #9684A3
 
       &-advantages
-      // &-form
+      &-stocks
         margin-bottom 200px
 
       &-form

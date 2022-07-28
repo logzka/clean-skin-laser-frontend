@@ -71,6 +71,7 @@
       )
       el-switch(
         v-model="ruleForm.callback"
+        size="large"
         )
 
     el-form-item(
@@ -83,18 +84,22 @@
         el-checkbox(
           label="Сведение тату"
           name="type"
+          size="large"
           )
         el-checkbox(
           label="Удалить татуаж"
           name="type"
+          size="large"
           )
         el-checkbox(
           label="Эпиляция"
           name="type"
+          size="large"
           )
         el-checkbox(
           label="Пиллинг"
           name="type"
+          size="large"
           )
 
     el-form-item(
@@ -166,11 +171,11 @@ export default {
       await this.$refs.form.validate((valid, fields) => {
         if (valid) {
           ElNotification({
-            message: 'Спасибо.Ваши данные успешно отправлены.',
+            message: 'Спасибо. Ваши данные успешно отправлены.',
             type: 'success',
           });
 
-          this.$refs.form.resetFields();
+          // this.$refs.form.resetFields();
         } else {
           console.log('error submit!', fields);
 
