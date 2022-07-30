@@ -59,7 +59,6 @@ $banner-height = 234px
             animation mosaic-tile-animate 4s ease-in-out infinite
             transition all .3s ease
             &:hover
-                animation none
                 backdrop-filter none
                 box-shadow none
 </style>

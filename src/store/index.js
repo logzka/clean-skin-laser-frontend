@@ -1,14 +1,10 @@
 import { createStore } from 'vuex';
 
+import schedule from './schedule';
+
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+  namespaced: true,
   modules: {
+    schedule,
   },
 });

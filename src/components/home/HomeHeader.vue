@@ -36,7 +36,7 @@ export default {
     background rgba(#fff, .8)
     backdrop-filter blur(10px)
 
-    z-index 999
+    z-index 9999
     &-inner
         padding 12px 0
     &__logo

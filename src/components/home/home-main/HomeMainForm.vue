@@ -76,29 +76,29 @@
 
     el-form-item(
       label="Услуга"
-      prop="type"
+      prop="services"
       )
       el-checkbox-group(
         v-model="ruleForm.type"
         )
         el-checkbox(
           label="Сведение тату"
-          name="type"
+          name="services"
           size="large"
           )
         el-checkbox(
           label="Удалить татуаж"
-          name="type"
+          name="services"
           size="large"
           )
         el-checkbox(
           label="Эпиляция"
-          name="type"
+          name="services"
           size="large"
           )
         el-checkbox(
           label="Пиллинг"
-          name="type"
+          name="services"
           size="large"
           )
 
@@ -140,14 +140,6 @@ const rules = {
       trigger: 'change',
     },
   ],
-  type: [
-    {
-      type: 'array',
-      required: true,
-      message: 'Пожалуйста, укажите услугу(и)',
-      trigger: 'change',
-    },
-  ],
 };
 
 export default {
@@ -159,7 +151,7 @@ export default {
       date: '',
       // time: '',
       callback: false,
-      type: [],
+      services: [],
       desc: '',
     },
 
