@@ -29,26 +29,27 @@
         )
 
     el-form-item(
-      label="Выберите город"
-      prop="region"
+      label="Выберите специалиста"
+      prop="master"
       )
       el-select(
-        v-model="ruleForm.region"
-        placeholder="Укажите город"
+        v-model="ruleForm.master"
+        placeholder="Выберите специалиста"
         size="large"
+        clearable
+        :remote-method="loadingMasters()"
+        remote
         )
         el-option(
-          label="Краснодар"
-          value="krasnodar"
-          )
-        el-option(
-          label="Ростов-на-Дону"
-          value="rostov"
+          v-for="master in preMasters"
+          :key="master.master.id"
+
+          :label="getFullMasterName(master)"
+          :value="master.master.id"
           )
 
     el-form-item(
       label="Когда Вам было бы удобно?"
-      required
       )
       el-col(:span="12")
         el-form-item(
@@ -82,7 +83,7 @@
         v-model="ruleForm.type"
         )
         el-checkbox(
-          label="Сведение тату"
+          label="Свести тату"
           name="services"
           size="large"
           )
@@ -133,20 +134,23 @@ const rules = {
   phone: [
     { required: true, message: 'Пожалуйста, укажите номер телефона', trigger: 'blur' },
   ],
-  region: [
-    {
-      required: true,
-      message: 'Пожалуйста, укажите город',
-      trigger: 'change',
-    },
-  ],
 };
 
 export default {
+  computed: {
+    masters() {
+      return this.$store.getters.masters || null;
+    },
+
+    preMasters() {
+      return this.masters || [];
+    },
+  },
+
   data: () => ({
     ruleForm: {
       name: '',
-      region: '',
+      master: '',
       phone: '',
       date: '',
       // time: '',
@@ -156,9 +160,20 @@ export default {
     },
 
     rules,
+
+    loadingDropdownMasters: false,
   }),
 
   methods: {
+    loadingMasters() {
+      this.loadingDropdownMasters = true;
+
+      setTimeout(() => {
+        this.$store.dispatch('getMasters', {});
+        this.loadingDropdownMasters = false;
+      }, 2000);
+    },
+
     async submitForm() {
       await this.$refs.form.validate((valid, fields) => {
         if (valid) {
@@ -181,6 +196,10 @@ export default {
 
     resetForm() {
       this.$refs.form.resetFields();
+    },
+
+    getFullMasterName({ master }) {
+      return `${master.first_name} ${master.last_name}`;
     },
   },
 };

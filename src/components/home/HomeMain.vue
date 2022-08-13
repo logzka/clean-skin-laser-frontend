@@ -19,12 +19,6 @@ el-main.home-main
               target="_blank"
               )
               img(src="@/assets/social/color/telegram.svg")
-          li.home-main-inner__view-social_list-item
-            a(
-              href="https://vk.com/"
-              target="_blank"
-              )
-              img(src="@/assets/social/color/vk.svg")
 
       section.flex.space-between.f-wrap(style="margin-bottom: 200px;")
 
@@ -40,7 +34,7 @@ el-main.home-main
               style="margin-right: 20px;"
               size="large"
               type="success"
-              @click="dialogVisible = true"
+              @click="$refs.homeMainDialog.openDialog()"
               ) Записаться
             el-button(
               size="large"
@@ -60,11 +54,11 @@ el-main.home-main
         .home-main-inner__view-form_inner
           home-main-form
 
-      home-main-dialog(
-        v-model="dialogVisible"
-        )
-
     router-view(v-else)
+
+    home-main-dialog(
+      ref="homeMainDialog"
+      )
 </template>
 
 <script>
@@ -85,10 +79,17 @@ export default {
     HomeMainDialog,
   },
 
-  data: () => ({
-    text: 'Добро пожаловать в нашу студию лазерной косметологии',
-    dialogVisible: false,
-  }),
+  mounted() {
+    console.log(this.$refs);
+
+    // this.$root.$on('openHomeMainDialog', (formData) => {
+    //   this.$refs.homeMainDialog.openDialog(formData);
+    // });
+  },
+
+  beforeUnmount() {
+    this.$root.$off('openHomeMainDialog');
+  },
 };
 </script>
 

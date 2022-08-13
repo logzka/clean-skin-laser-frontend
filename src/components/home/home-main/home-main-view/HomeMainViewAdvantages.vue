@@ -12,7 +12,7 @@
             SwitchButton
         .home-main-view-advantages_item-text.b.text-center
             a(
-                href="https://www.instagram.com/lasertech_official/?igshid=YmMyMTA2M2Y%3D"
+                href="https://nettattoo.ru/"
                 target="_blank"
                 ) Качественное оборудование
                     br

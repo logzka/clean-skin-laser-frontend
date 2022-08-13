@@ -49,7 +49,7 @@ export default {
             a
                 padding 12px 18px
                 border-radius 2px
-                transition all .2s ease
+                transition all .3s ease
                 &:hover:not(.router-link-active.router-link-exact-active)
                     opacity .7
             .router-link-active.router-link-exact-active

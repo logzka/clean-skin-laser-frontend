@@ -12,12 +12,27 @@
                 el-button-group
                     el-button(
                         size="small"
-                        @click="selectDate('today')"
+                        @click="selectDate('today'),getCalendarSchedule(),popoverVisible=false"
                         ) Сегодня
                     el-button(
                         size="small"
-                        @click="selectDate('next-month')"
+                        @click="selectDate('next-month'),getCalendarSchedule(),popoverVisible=false"
                         ) След. месяц
+
+            template(
+              #dateCell="{ data }"
+              )
+              .w-100.h-100(
+                :class="{'free-date': hasFree(data.day)}"
+
+                @click="getFreeSchedule(data.day)"
+                )
+                p.b(
+                  :class="data.isSelected ? 'is-selected' : ''"
+                  ) {{ $formatDate(data.day, 'DD') }}&nbsp;
+                  span(
+                    v-if="hasFree(data.day)"
+                    ) - есть свободные места
 
         el-popover(
             :width="600"
@@ -47,9 +62,10 @@
                         prop="master"
                         label="Мастер"
                         sortable
+                        :formatter="getFullMasterName"
                         )
                     el-table-column(
-                        prop="services"
+                        prop="master"
                         label="Услуги (-га)"
                         sortable
                         :formatter="divideServices"
@@ -89,33 +105,14 @@ export default {
   }),
 
   mounted() {
-    this.loadingCalendarSchedule = true;
+    this.getCalendarSchedule();
+  },
 
-    setTimeout(() => {
-      this.$store.dispatch('getSchedule', {
-        date: this.currentDate || new Date(),
-        type: 'free',
-      });
-
-      this.loadingCalendarSchedule = false;
-    }, 1000);
+  unmounted() {
+    this.$store.dispatch('resetSchedule');
   },
 
   watch: {
-    currentDate(date) {
-      this.popoverVisible = true;
-
-      this.loadingDateSchedule = true;
-
-      setTimeout(() => {
-        this.$store.dispatch('getSchedule', {
-          date: date || new Date(),
-          type: 'free',
-        });
-
-        this.loadingDateSchedule = false;
-      }, 1000);
-    },
   },
 
   methods: {
@@ -127,8 +124,45 @@ export default {
       return this.$formatDate(cellValue, 'HH:mm');
     },
 
+    getFullMasterName(row, column, cellValue) {
+      return `${cellValue.first_name} ${cellValue.last_name}`;
+    },
+
     divideServices(row, column, cellValue) {
-      return cellValue.join(', ');
+      return cellValue.services.join(', ');
+    },
+
+    getCalendarSchedule(dateRange) {
+      this.loadingCalendarSchedule = true;
+
+      setTimeout(() => {
+        this.$store.dispatch('getSchedule', {
+          date: dateRange || [new Date()],
+          type: 'free',
+        });
+
+        this.loadingCalendarSchedule = false;
+      }, 1000);
+    },
+
+    getFreeSchedule(date) {
+      // TODO: Change after back-end will connect
+      this.popoverVisible = date && this.hasFree(date);
+      this.loadingDateSchedule = date && this.hasFree(date);
+
+      setTimeout(() => {
+        this.$store.dispatch('getSchedule', {
+          date: date || new Date(),
+          type: 'free',
+        });
+
+        this.loadingDateSchedule = false;
+      }, 1000);
+    },
+
+    hasFree(date) {
+      return this.preSchedule
+        .some((el) => this.$formatDate(el.date) === this.$formatDate(date));
     },
   },
 };
@@ -143,6 +177,17 @@ export default {
         .el-calendar
             margin-right 1%
             transition all .3s ease
+            .free-date
+              background-color #2CC990
+              box-shadow 4px 4px 8px rgba(0,0,0, .2)
+              color #fff
+              border-radius 2px
+              padding 5px
+              transition all .2s ease
+              &:hover
+                box-shadow none
+              span
+                font-size 14px
         &_table
             height calc(100vh - 440px)
             padding 24px 0

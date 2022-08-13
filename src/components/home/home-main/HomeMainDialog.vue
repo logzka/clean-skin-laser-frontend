@@ -1,5 +1,6 @@
 <template lang="pug">
 el-dialog(
+    v-model="dialogVisible"
     title="Заполните заявку и мы с Вами свяжемся в ближайшее время"
     )
     home-main-form
@@ -16,6 +17,14 @@ export default {
   data: () => ({
     dialogVisible: false,
   }),
+
+  methods: {
+    openDialog(formData) {
+      this.dialogVisible = true;
+
+      console.log(formData);
+    },
+  },
 };
 </script>
 
