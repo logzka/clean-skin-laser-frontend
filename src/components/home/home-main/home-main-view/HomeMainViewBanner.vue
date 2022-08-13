@@ -3,7 +3,6 @@
     .home-main-view-banner__mosaic
         .home-main-view-banner__mosaic-tile(
             v-for="item in 21"
-            :key="item"
 
             :style="getTileStyle(item)"
             )
@@ -24,7 +23,7 @@ export default {
       return {
         left: `${indexLeft * 78}px`,
         top: `${indexTop * 78}px`,
-        'animation-delay': `${item * Math.random()}s`,
+        'animation-delay': `${itemIndex * Math.random()}s`,
       };
     },
   },
@@ -53,12 +52,11 @@ $banner-height = 234px
             height 78px
             border-radius 2px
             position absolute
-            backdrop-filter blur(5px)
-            box-shadow 1px 2px 4px rgba(#9684A3, .8)
+            // backdrop-filter blur(5px)
+            // box-shadow 1px 2px 4px rgba(#9684A3, .8)
+            backdrop-filter none
+            box-shadow none
             z-index 99
-            animation mosaic-tile-animate 4s ease-in-out infinite
+            animation mosaic-tile-animate 4s linear infinite
             transition all .3s ease
-            &:hover
-                backdrop-filter none
-                box-shadow none
 </style>

@@ -3,7 +3,9 @@ el-dialog(
     v-model="dialogVisible"
     title="Заполните заявку и мы с Вами свяжемся в ближайшее время"
     )
-    home-main-form
+    home-main-form(
+      ref="homeMainForm"
+      )
 </template>
 
 <script>
@@ -22,7 +24,9 @@ export default {
     openDialog(formData) {
       this.dialogVisible = true;
 
-      console.log(formData);
+      this.$nextTick(() => {
+        if (formData) this.$refs.homeMainForm.setFormData(formData);
+      });
     },
   },
 };

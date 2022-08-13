@@ -80,15 +80,13 @@ export default {
   },
 
   mounted() {
-    console.log(this.$refs);
-
-    // this.$root.$on('openHomeMainDialog', (formData) => {
-    //   this.$refs.homeMainDialog.openDialog(formData);
-    // });
+    this.$emitter.on('openHomeMainDialog', (formData) => {
+      this.$refs.homeMainDialog.openDialog(formData);
+    });
   },
 
   beforeUnmount() {
-    this.$root.$off('openHomeMainDialog');
+    this.$emitter.off('openHomeMainDialog');
   },
 };
 </script>

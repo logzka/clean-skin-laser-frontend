@@ -58,10 +58,22 @@
           el-date-picker.w-100(
             v-model="ruleForm.date"
             type="date"
-            label="Выберите дату"
             placeholder="Выберите дату"
             size="large"
           )
+      el-col(:span="11" :offset="1")
+        el-form-item(
+          prop="time"
+          )
+          el-time-select(
+            v-model="ruleForm.time"
+            start="08:00"
+            step="1:00"
+            end="20:00"
+            placeholder="Выберите время"
+            size="large"
+            disabled
+            )
 
       el-col.text-center(:span="2")
         span.text-gray-500
@@ -80,26 +92,15 @@
       prop="services"
       )
       el-checkbox-group(
-        v-model="ruleForm.type"
+        v-model="ruleForm.services"
         )
         el-checkbox(
-          label="Свести тату"
-          name="services"
-          size="large"
-          )
-        el-checkbox(
-          label="Удалить татуаж"
-          name="services"
-          size="large"
-          )
-        el-checkbox(
-          label="Эпиляция"
-          name="services"
-          size="large"
-          )
-        el-checkbox(
-          label="Пиллинг"
-          name="services"
+          v-for="service in services"
+
+          :label="service.name"
+          :name="service.name"
+          :disabled="(masterServices.length > 0 && !masterServices.includes(service.id))"
+
           size="large"
           )
 
@@ -145,6 +146,17 @@ export default {
     preMasters() {
       return this.masters || [];
     },
+
+    services() {
+      return this.$store.getters.services || [];
+    },
+
+    masterServices() {
+      const selectedMaster = this.preMasters
+        .find((master) => master.master.id === this.ruleForm.master) || {};
+
+      return selectedMaster?.master?.services || [];
+    },
   },
 
   data: () => ({
@@ -153,7 +165,7 @@ export default {
       master: '',
       phone: '',
       date: '',
-      // time: '',
+      time: '',
       callback: false,
       services: [],
       desc: '',
@@ -200,6 +212,11 @@ export default {
 
     getFullMasterName({ master }) {
       return `${master.first_name} ${master.last_name}`;
+    },
+
+    setFormData(formData) {
+      console.log(formData);
+      this.ruleForm = formData || {};
     },
   },
 };

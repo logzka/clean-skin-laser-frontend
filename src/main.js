@@ -5,6 +5,7 @@ import ru from 'element-plus/es/locale/lang/ru';
 // import en from 'element-plus/es/locale/lang/en';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 
+import Emitter from 'tiny-emitter';
 import App from './App.vue';
 
 import router from './router';
@@ -15,6 +16,9 @@ import globalProperties from './global-properties';
 const app = createApp(App);
 
 app.config.globalProperties.$formatDate = globalProperties.formatDate;
+
+const emitter = new Emitter();
+app.config.globalProperties.$emitter = emitter;
 
 // eslint-disable-next-line no-restricted-syntax
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

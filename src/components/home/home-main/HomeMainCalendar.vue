@@ -49,7 +49,7 @@
                     span {{ $formatDate(currentDate) }}
 
                 el-table.w-100(
-                    :data="preSchedule"
+                    :data="filteredByCurrentDateSchedule"
                     )
                     el-table-column(
                         fixed
@@ -71,10 +71,11 @@
                         :formatter="divideServices"
                         )
                     el-table-column(width="175")
-                        template(#default)
+                        template(v-slot="row")
                             el-button(
                                 type="success"
                                 size="small"
+                                @click="openHomeMainDialog(row)"
                                 ) Записаться
 
             .home-main-calendar__inner_empty(v-else) На текущую дату нет доступного времени
@@ -95,6 +96,18 @@ export default {
     preSchedule() {
       return this.schedule || [];
     },
+
+    services() {
+      return this.$store.getters.services || [];
+    },
+
+    // TODO: Remove when back filtering will add.
+    filteredByCurrentDateSchedule() {
+      const filteredByCurrentDate = this.preSchedule
+        .filter((item) => this.$formatDate(item.date) === this.$formatDate(this.currentDate)) || [];
+
+      return filteredByCurrentDate;
+    },
   },
 
   data: () => ({
@@ -105,6 +118,7 @@ export default {
   }),
 
   mounted() {
+    this.$store.dispatch('getServices', {});
     this.getCalendarSchedule();
   },
 
@@ -128,8 +142,16 @@ export default {
       return `${cellValue.first_name} ${cellValue.last_name}`;
     },
 
+    setServicesToNames(services) {
+      return (services || [])
+        .map((serviceId) => this.services
+          .find((service) => service.id === serviceId)?.name) || [];
+    },
+
     divideServices(row, column, cellValue) {
-      return cellValue.services.join(', ');
+      const formattedServicesToNames = this.setServicesToNames(cellValue.services);
+
+      return formattedServicesToNames.join(', ');
     },
 
     getCalendarSchedule(dateRange) {
@@ -164,6 +186,15 @@ export default {
       return this.preSchedule
         .some((el) => this.$formatDate(el.date) === this.$formatDate(date));
     },
+
+    openHomeMainDialog({ row }) {
+      this.$emitter.emit('openHomeMainDialog', {
+        date: row.date,
+        time: this.$formatDate(row.date, 'HH:mm'),
+        master: row.master.id,
+        services: row.master.services,
+      });
+    },
   },
 };
 </script>
@@ -183,7 +214,7 @@ export default {
               color #fff
               border-radius 2px
               padding 5px
-              transition all .2s ease
+              transition all .1s ease
               &:hover
                 box-shadow none
               span

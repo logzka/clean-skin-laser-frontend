@@ -39,8 +39,6 @@
             )
             el-card.box-card.w-100(
                 v-for="master in preMasters"
-                :key="master.id"
-
                 shadow="hover"
                 )
                 template(#header)
@@ -48,13 +46,13 @@
                         h2 {{ master.master.first_name }} {{ master.master.last_name }}
                         el-button.button(
                             type="primary"
-                            @click="openHomeMainDialog()"
+                            @click="openHomeMainDialog(master.master)"
                             ) Записаться
                 .box-card__content.flex
                     .box-card__content-photo
                     .box-card__content-text
                         h3 Процедуры
-                        | {{ master.master.services.join('; ') }}
+                        | {{ divideServices(master.master.services) }}
                         h3 Квалификация
                         | {{ master.master.skills }}
                         h3 Опыт работы
@@ -81,6 +79,10 @@ export default {
     preMasters() {
       return this.masters || [];
     },
+
+    services() {
+      return this.$store.getters.services || [];
+    },
   },
 
   data: () => ({
@@ -98,6 +100,7 @@ export default {
     this.loadingMasters = true;
 
     setTimeout(() => {
+      this.$store.dispatch('getServices', {});
       this.$store.dispatch('getMasters', this.params);
 
       this.loadingMasters = false;
@@ -105,8 +108,20 @@ export default {
   },
 
   methods: {
-    openHomeMainDialog() {
-      console.log(this.$refs);
+    openHomeMainDialog(master) {
+      this.$emitter.emit('openHomeMainDialog', { master: master.id });
+    },
+
+    setServicesToNames(services) {
+      return (services || [])
+        .map((serviceId) => this.services
+          .find((service) => service.id === serviceId)?.name) || [];
+    },
+
+    divideServices(masterServices) {
+      const formattedServicesToNames = this.setServicesToNames(masterServices);
+
+      return formattedServicesToNames.join(', ');
     },
   },
 };

@@ -12,13 +12,27 @@ const stocksApi = [{
   route: '@/assets/stocks/stroenie-kozhi_.png',
 }];
 
+const servicesApi = [{
+  id: 'hgfd76545hgf',
+  name: 'Удаление тату/татуажа',
+  master: ['897dnjmf88'],
+}, {
+  id: 'byg76fgvf64f',
+  name: 'Пилинг',
+  master: ['23456jgf', '897dnjmf88'],
+}, {
+  id: 'nbuv7vcrnuy74',
+  name: 'Эпиляция',
+  master: ['23456jgf'],
+}];
+
 const mastersApi = [
   {
     master: {
       id: '23456jgf',
       first_name: 'Мария',
       last_name: 'Воспанова',
-      services: ['Эпиляция', 'Пилинг'],
+      services: ['nbuv7vcrnuy74', 'byg76fgvf64f'],
       photo: 'masters/vospanova.jpeg',
       skills: 'Следует отметить, что социально-экономическое развитие, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для распределения внутренних резервов и ресурсов.',
       experience: '5 лет',
@@ -33,7 +47,7 @@ const mastersApi = [
       id: '897dnjmf88',
       first_name: 'Валерий',
       last_name: 'Иванов',
-      services: ['Сведение тату/татуажа', 'Пилинг'],
+      services: ['hgfd76545hgf', 'byg76fgvf64f'],
       photo: 'masters/ivanov.jpeg',
       skills: 'Следует отметить, что социально-экономическое развитие, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для распределения внутренних резервов и ресурсов. Разнообразный и богатый опыт говорит нам, что сплочённость команды профессионалов однозначно фиксирует необходимость экспериментов, поражающих по своей масштабности и грандиозности. А ещё акционеры крупнейших компаний могут быть преданы социально-демократической анафеме.',
       experience: 'Более 10 лет',
@@ -53,7 +67,7 @@ const scheduleApi = [{
     id: '23456jgf',
     first_name: 'Мария',
     last_name: 'Воспанова',
-    services: ['Эпиляция', 'Пилинг'],
+    services: ['nbuv7vcrnuy74', 'byg76fgvf64f'],
     experience: '5 лет',
     closest_free_dates: [
       'Mon Aug 15 2022 12:00:00 GMT+0300 (Москва, стандартное время)',
@@ -67,7 +81,7 @@ const scheduleApi = [{
     id: '897dnjmf88',
     first_name: 'Валерий',
     last_name: 'Иванов',
-    services: ['Сведение тату/татуажа', 'Пилинг'],
+    services: ['hgfd76545hgf', 'byg76fgvf64f'],
     experience: 'Более 10 лет',
     closest_free_dates: [
       'Mon Aug 19 2022 13:30:00 GMT+0300 (Москва, стандартное время)',
@@ -82,7 +96,7 @@ const scheduleApi = [{
     id: '897dnjmf88',
     first_name: 'Валерий',
     last_name: 'Иванов',
-    services: ['Сведение тату/татуажа', 'Пилинг'],
+    services: ['hgfd76545hgf', 'byg76fgvf64f'],
     experience: 'Более 10 лет',
     closest_free_dates: [
       'Mon Aug 19 2022 13:30:00 GMT+0300 (Москва, стандартное время)',
@@ -97,7 +111,7 @@ const scheduleApi = [{
     id: '23456jgf',
     first_name: 'Мария',
     last_name: 'Воспанова',
-    services: ['Эпиляция', 'Пилинг'],
+    services: ['nbuv7vcrnuy74', 'byg76fgvf64f'],
     experience: '5 лет',
     closest_free_dates: [
       'Mon Aug 15 2022 12:00:00 GMT+0300 (Москва, стандартное время)',
@@ -110,6 +124,7 @@ const scheduleApi = [{
 
 export default {
   stocksApi,
+  servicesApi,
   mastersApi,
   scheduleApi,
 };
