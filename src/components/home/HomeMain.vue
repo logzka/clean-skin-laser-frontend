@@ -6,10 +6,19 @@ el-main.home-main
 
       .home-main-inner__view-title.flex.space-between.align-center
         h1 Clean Skin Laser Studio
-        a.b(
-          href="#"
-          target="_blank"
-          ) Instagram
+        ul.home-main-inner__view-social_list.flex
+          li.home-main-inner__view-social_list-item
+            a(
+              href="https://instagram.com/"
+              target="_blank"
+              )
+              img(src="@/assets/social/color/instagram.svg")
+          li.home-main-inner__view-social_list-item
+            a(
+              href="/"
+              target="_blank"
+              )
+              img(src="@/assets/social/color/telegram.svg")
 
       section.flex.space-between.f-wrap(style="margin-bottom: 200px;")
 
@@ -25,12 +34,12 @@ el-main.home-main
               style="margin-right: 20px;"
               size="large"
               type="success"
-              @click="dialogVisible = true"
+              @click="$refs.homeMainDialog.openDialog()"
               ) Записаться
             el-button(
               size="large"
               type="primary"
-              ) Акции
+              ) Система абонементов
 
         .home-main-inner__view-banner
           home-main-view-banner
@@ -38,20 +47,25 @@ el-main.home-main
       section.home-main-inner__view-advantages
         home-main-view-advantages
 
+      section.home-main-inner__view-stocks
+        home-main-view-stocks
+
       section.home-main-inner__view-form
         .home-main-inner__view-form_inner
           home-main-form
 
-      home-main-dialog(
-        v-model="dialogVisible"
-        )
-
     router-view(v-else)
+
+    home-main-dialog(
+      ref="homeMainDialog"
+      )
 </template>
 
 <script>
 import HomeMainViewBanner from './home-main/home-main-view/HomeMainViewBanner.vue';
 import HomeMainViewAdvantages from './home-main/home-main-view/HomeMainViewAdvantages.vue';
+import HomeMainViewStocks from './home-main/home-main-view/HomeMainViewStocks.vue';
+
 import HomeMainForm from './home-main/HomeMainForm.vue';
 import HomeMainDialog from './home-main/HomeMainDialog.vue';
 
@@ -59,19 +73,28 @@ export default {
   components: {
     HomeMainViewBanner,
     HomeMainViewAdvantages,
+    HomeMainViewStocks,
+
     HomeMainForm,
     HomeMainDialog,
   },
 
-  data: () => ({
-    text: 'Добро пожаловать в нашу студию лазерной косметологии',
-    dialogVisible: false,
-  }),
+  mounted() {
+    this.$store.dispatch('getServices', {});
+
+    this.$emitter.on('openHomeMainDialog', (formData) => {
+      this.$refs.homeMainDialog.openDialog(formData);
+    });
+  },
+
+  beforeUnmount() {
+    this.$emitter.off('openHomeMainDialog');
+  },
 };
 </script>
 
 <style lang="stylus">
-$banner-height = 224px;
+$banner-height = 234px;
 
 .home-main
   --el-main-padding 80px 20px
@@ -82,8 +105,13 @@ $banner-height = 224px;
       &-title
         margin-bottom 40px
         color #9684A3
-        a
-          color #2CC990
+      &-social_list
+        &-item
+          margin-right 10px
+          &:last-child
+            margin-right 0px
+          img
+            width 28px
       &-content
         max-width 45%
         height $banner-height
@@ -94,7 +122,7 @@ $banner-height = 224px;
           color #9684A3
 
       &-advantages
-      // &-form
+      &-stocks
         margin-bottom 200px
 
       &-form

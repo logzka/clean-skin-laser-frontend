@@ -1,7 +1,7 @@
 <template lang="pug">
-nav.header-nav-menu
-    ul.header-nav-menu__list.flex.space-between.align-center
-        li.header-nav-menu__list-item(
+nav.footer-nav-menu
+    ul.footer-nav-menu__list.flex.f-col.space-center
+        li.footer-nav-menu__list-item(
             v-for="item in menuItems"
             :key="item.link"
             )
@@ -12,23 +12,29 @@ nav.header-nav-menu
 
 <script>
 const menuItems = [{
-  label: 'Свободные даты',
+  label: 'Когда можно проконсультироваться?',
   link: '/calendar',
 }, {
-  label: 'Мастера',
+  label: 'Кто будет выполнять процедуру?',
   link: '/masters',
-}, {
-  label: 'Студия',
-  link: '/studio',
-}, {
-  label: 'Оборудование',
-  link: '/lasers',
-}, {
-  label: 'Прайс',
+},
+// {
+//   label: 'Студия',
+//   link: '/studio',
+// },
+// {
+//   label: 'Оборудование',
+//   link: '/lasers',
+// },
+{
+  label: 'Сколько стоит?',
   link: '/price',
 }, {
-  label: 'Контакты',
+  label: 'Где Вас найти?',
   link: '/contacts',
+}, {
+  label: 'Главная',
+  link: '/',
 }];
 
 export default {
@@ -42,17 +48,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.header-nav-menu
+.footer-nav-menu
     &__list
         &-item
             cursor pointer
+            padding 4px 0
             a
-                padding 12px 18px
-                border-radius 2px
-                transition all .3s ease
+                transition all .2s ease
                 &:hover:not(.router-link-active.router-link-exact-active)
                     opacity .7
             .router-link-active.router-link-exact-active
-                color white
-                background-image linear-gradient(45deg, #2CC990, #9684A3)
+                text-decoration underline
 </style>

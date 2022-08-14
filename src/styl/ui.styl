@@ -10,6 +10,12 @@
         &:not(.is-disabled):hover
             color $regular
 
+    &--info
+        --el-button-text-color $purple
+        --el-button-hover-text-color $purple
+        &.is-plain
+            --el-button-hover-text-color $purple
+
 
 /** UI Form */
 .el-form
@@ -22,3 +28,8 @@
 .el-date-picker
     .el-date-table td.today .el-date-table-cell__text
         color #2CC990
+
+/** UI Notification */
+.el-notification
+    &__content
+        text-align left

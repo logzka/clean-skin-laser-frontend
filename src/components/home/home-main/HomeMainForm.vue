@@ -21,7 +21,7 @@
 
     el-form-item(
       label="Номер телефона"
-      prop="name"
+      prop="phone"
       )
       el-input(
         v-model="ruleForm.phone"
@@ -29,26 +29,28 @@
         )
 
     el-form-item(
-      label="Выберите город"
-      prop="region"
+      label="Выберите специалиста"
+      prop="master"
       )
       el-select(
-        v-model="ruleForm.region"
-        placeholder="Укажите город"
+        v-model="ruleForm.master"
+        placeholder="Выберите специалиста"
         size="large"
+        clearable
+        :remote-method="loadingMasters()"
+        remote
+        @change="ruleForm.date = null"
         )
         el-option(
-          label="Краснодар"
-          value="krasnodar"
-          )
-        el-option(
-          label="Ростов-на-Дону"
-          value="rostov"
+          v-for="master in preMasters"
+          :key="master.master.id"
+
+          :label="getFullMasterName(master)"
+          :value="master.master.id"
           )
 
     el-form-item(
       label="Когда Вам было бы удобно?"
-      required
       )
       el-col(:span="12")
         el-form-item(
@@ -57,10 +59,23 @@
           el-date-picker.w-100(
             v-model="ruleForm.date"
             type="date"
-            label="Выберите дату"
             placeholder="Выберите дату"
             size="large"
+            :disabled-date="getDisabledDates"
           )
+      el-col(:span="11" :offset="1")
+        el-form-item(
+          prop="time"
+          )
+          el-time-select(
+            v-model="ruleForm.time"
+            start="08:00"
+            step="1:00"
+            end="20:00"
+            placeholder="Выберите время"
+            size="large"
+            disabled
+            )
 
       el-col.text-center(:span="2")
         span.text-gray-500
@@ -71,30 +86,24 @@
       )
       el-switch(
         v-model="ruleForm.callback"
+        size="large"
         )
 
     el-form-item(
       label="Услуга"
-      prop="type"
+      prop="services"
       )
       el-checkbox-group(
-        v-model="ruleForm.type"
+        v-model="ruleForm.services"
         )
         el-checkbox(
-          label="Сведение тату"
-          name="type"
-          )
-        el-checkbox(
-          label="Удалить татуаж"
-          name="type"
-          )
-        el-checkbox(
-          label="Эпиляция"
-          name="type"
-          )
-        el-checkbox(
-          label="Пиллинг"
-          name="type"
+          v-for="service in services"
+
+          :label="service.name"
+          :name="service.name"
+          :disabled="(masterServices.length > 0 && !masterServices.includes(service.id))"
+
+          size="large"
           )
 
     el-form-item(
@@ -128,45 +137,68 @@ const rules = {
   phone: [
     { required: true, message: 'Пожалуйста, укажите номер телефона', trigger: 'blur' },
   ],
-  region: [
-    {
-      required: true,
-      message: 'Пожалуйста, укажите город',
-      trigger: 'change',
-    },
-  ],
-  type: [
-    {
-      type: 'array',
-      required: true,
-      message: 'Пожалуйста, укажите услугу(и)',
-      trigger: 'change',
-    },
-  ],
 };
 
 export default {
+  computed: {
+    masters() {
+      return this.$store.getters.masters || null;
+    },
+
+    preMasters() {
+      return this.masters || [];
+    },
+
+    services() {
+      return this.$store.getters.services || [];
+    },
+
+    selectedMaster() {
+      return this.preMasters
+        .find((master) => master.master.id === this.ruleForm.master) || null;
+    },
+
+    masterServices() {
+      return this.selectedMaster?.master?.services || [];
+    },
+
+    masterClosestFreeDates() {
+      return this.selectedMaster?.master?.closest_free_dates || [];
+    },
+  },
+
   data: () => ({
     ruleForm: {
       name: '',
-      region: '',
       phone: '',
-      date: '',
-      // time: '',
+      master: null,
+      date: null,
+      time: null,
       callback: false,
-      type: [],
+      services: [],
       desc: '',
     },
 
     rules,
+
+    loadingDropdownMasters: false,
   }),
 
   methods: {
+    loadingMasters() {
+      this.loadingDropdownMasters = true;
+
+      setTimeout(() => {
+        this.$store.dispatch('getMasters', {});
+        this.loadingDropdownMasters = false;
+      }, 2000);
+    },
+
     async submitForm() {
       await this.$refs.form.validate((valid, fields) => {
         if (valid) {
           ElNotification({
-            message: 'Спасибо.Ваши данные успешно отправлены.',
+            message: 'Спасибо. Ваши данные успешно отправлены.',
             type: 'success',
           });
 
@@ -185,11 +217,25 @@ export default {
     resetForm() {
       this.$refs.form.resetFields();
     },
+
+    getFullMasterName({ master }) {
+      return `${master.first_name} ${master.last_name}`;
+    },
+
+    setFormData(formData) {
+      console.log(formData);
+      this.ruleForm = formData || {};
+    },
+
+    getDisabledDates(date) {
+      return this.selectedMaster && !this.masterClosestFreeDates
+        .some((freeDate) => this.$formatDate(freeDate) === this.$formatDate(date));
+    },
   },
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .home-main-form
   background #fff
   .el-form
@@ -201,4 +247,6 @@ export default {
         margin-top 15px
           .el-form-item__content
             justify-content space-between
+      &__label
+        font-weight bold
 </style>
