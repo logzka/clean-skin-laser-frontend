@@ -5,7 +5,6 @@
     )
     el-carousel-item.flex(
       v-for="stock in stocksApi"
-      :key="stock.id"
       )
       h3 {{ stock.name }}
 </template>

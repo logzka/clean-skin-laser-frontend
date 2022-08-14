@@ -100,7 +100,6 @@ export default {
     this.loadingMasters = true;
 
     setTimeout(() => {
-      this.$store.dispatch('getServices', {});
       this.$store.dispatch('getMasters', this.params);
 
       this.loadingMasters = false;

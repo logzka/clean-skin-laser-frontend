@@ -80,6 +80,8 @@ export default {
   },
 
   mounted() {
+    this.$store.dispatch('getServices', {});
+
     this.$emitter.on('openHomeMainDialog', (formData) => {
       this.$refs.homeMainDialog.openDialog(formData);
     });

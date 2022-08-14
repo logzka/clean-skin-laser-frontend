@@ -118,7 +118,6 @@ export default {
   }),
 
   mounted() {
-    this.$store.dispatch('getServices', {});
     this.getCalendarSchedule();
   },
 

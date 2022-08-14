@@ -39,6 +39,7 @@
         clearable
         :remote-method="loadingMasters()"
         remote
+        @change="ruleForm.date = null"
         )
         el-option(
           v-for="master in preMasters"
@@ -60,6 +61,7 @@
             type="date"
             placeholder="Выберите дату"
             size="large"
+            :disabled-date="getDisabledDates"
           )
       el-col(:span="11" :offset="1")
         el-form-item(
@@ -151,21 +153,27 @@ export default {
       return this.$store.getters.services || [];
     },
 
-    masterServices() {
-      const selectedMaster = this.preMasters
-        .find((master) => master.master.id === this.ruleForm.master) || {};
+    selectedMaster() {
+      return this.preMasters
+        .find((master) => master.master.id === this.ruleForm.master) || null;
+    },
 
-      return selectedMaster?.master?.services || [];
+    masterServices() {
+      return this.selectedMaster?.master?.services || [];
+    },
+
+    masterClosestFreeDates() {
+      return this.selectedMaster?.master?.closest_free_dates || [];
     },
   },
 
   data: () => ({
     ruleForm: {
       name: '',
-      master: '',
       phone: '',
-      date: '',
-      time: '',
+      master: null,
+      date: null,
+      time: null,
       callback: false,
       services: [],
       desc: '',
@@ -218,11 +226,16 @@ export default {
       console.log(formData);
       this.ruleForm = formData || {};
     },
+
+    getDisabledDates(date) {
+      return this.selectedMaster && !this.masterClosestFreeDates
+        .some((freeDate) => this.$formatDate(freeDate) === this.$formatDate(date));
+    },
   },
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .home-main-form
   background #fff
   .el-form
@@ -234,4 +247,6 @@ export default {
         margin-top 15px
           .el-form-item__content
             justify-content space-between
+      &__label
+        font-weight bold
 </style>
