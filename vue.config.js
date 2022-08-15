@@ -17,4 +17,8 @@ module.exports = defineConfig({
       title: 'CS Laser Studio',
     },
   },
+
+  devServer: {
+    allowedHosts: 'all',
+  },
 });
