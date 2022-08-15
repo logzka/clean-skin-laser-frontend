@@ -17,8 +17,4 @@ module.exports = defineConfig({
       title: 'CS Laser Studio',
     },
   },
-
-  devServer: {
-    allowedHosts: 'clean-skin-laser.herokuapp.com',
-  },
 });
