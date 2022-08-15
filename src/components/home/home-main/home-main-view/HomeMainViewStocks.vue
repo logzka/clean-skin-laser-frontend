@@ -4,18 +4,26 @@
     indicator-position="outside"
     )
     el-carousel-item.flex(
-      v-for="stock in stocksApi"
+      v-for="stock in stocks"
       )
       h3 {{ stock.name }}
 </template>
 
 <script>
-import stocksApi from '@/server';
 
 export default {
+  computed: {
+    stocks() {
+      return this.$store.getters.stocks || [];
+    },
+  },
+
   data: () => ({
-    stocksApi,
   }),
+
+  mounted() {
+    this.$store.dispatch('getStocks');
+  },
 
   methods: {
     getStockBanner(stock) {
