@@ -19,6 +19,6 @@ module.exports = defineConfig({
   },
 
   devServer: {
-    allowedHosts: 'all',
+    allowedHosts: 'clean-skin-laser.herokuapp.com',
   },
 });
