@@ -1,4 +1,4 @@
-# clean-skin-laser
+# clean-skin-laser-frontend
 
 ## Project setup
 ```
