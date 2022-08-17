@@ -69,7 +69,8 @@ export default {
             width 50%
             margin-right 5%
             &__container
-                // min-height 100%
+                //TODO: Разобраться с высотой контейнера.
+                min-height 300px
             &__item
                 background-image url('@/assets/studio/studio_1.webp')
                 border-radius: 2px;
