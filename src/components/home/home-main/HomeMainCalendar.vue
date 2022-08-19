@@ -72,11 +72,10 @@
                         )
                     el-table-column(width="175")
                         template(v-slot="row")
-                            el-button(
-                                type="success"
-                                size="small"
-                                @click="openHomeMainDialog(row)"
-                                ) Записаться
+                            AppointmentButton(
+                              :dataForDialog="createDataForAppointmentButton(row)"
+                              buttonSize="small"
+                              )
 
             .home-main-calendar__inner_empty(v-else) На текущую дату нет доступного времени
 
@@ -186,13 +185,13 @@ export default {
         .some((el) => this.$formatDate(el.date) === this.$formatDate(date));
     },
 
-    openHomeMainDialog({ row }) {
-      this.$emitter.emit('openHomeMainDialog', {
+    createDataForAppointmentButton({ row }) {
+      return {
         date: row.date,
         time: this.$formatDate(row.date, 'HH:mm'),
         master: row.master.id,
         services: row.master.services,
-      });
+      };
     },
   },
 };

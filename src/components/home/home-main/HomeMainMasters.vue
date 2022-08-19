@@ -42,12 +42,12 @@
                 shadow="hover"
                 )
                 template(#header)
-                    .card-header.flex.space-between
+                    .card-header.flex.space-between.align-center
                         h2 {{ master.master.first_name }} {{ master.master.last_name }}
-                        el-button.button(
-                            type="primary"
-                            @click="openHomeMainDialog(master.master)"
-                            ) Записаться
+                        AppointmentButton(
+                          :dataForDialog="{ master: master.master.id }"
+                          buttonType="primary"
+                          )
                 .box-card__content.flex
                     .box-card__content-photo
                     .box-card__content-text
@@ -107,10 +107,6 @@ export default {
   },
 
   methods: {
-    openHomeMainDialog(master) {
-      this.$emitter.emit('openHomeMainDialog', { master: master.id });
-    },
-
     setServicesToNames(services) {
       return (services || [])
         .map((serviceId) => this.services
