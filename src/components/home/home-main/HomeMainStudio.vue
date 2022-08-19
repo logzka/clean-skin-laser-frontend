@@ -18,10 +18,9 @@
                 h3 {{ currentStudioItem?.title }}
                 p {{ currentStudioItem?.desc }}
             .home-main-studio__inner-content_button
-                el-button.button(
-                    type="primary"
-                    @click="openHomeMainDialog()"
-                    ) Записаться
+                AppointmentButton(
+                  buttonType="primary"
+                  )
 </template>
 
 <script>
@@ -53,10 +52,6 @@ export default {
   methods: {
     setCurrentStudioItem(itemIndex) {
       this.currentStudioItem = this.studio[itemIndex] || null;
-    },
-
-    openHomeMainDialog() {
-      this.$emitter.emit('openHomeMainDialog');
     },
   },
 };

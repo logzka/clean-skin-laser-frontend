@@ -30,12 +30,7 @@ el-main.home-main
             h2 Карбоновый пиллинг
 
           .home-main-inner__view-content_buttons.flex
-            el-button(
-              style="margin-right: 20px;"
-              size="large"
-              type="success"
-              @click="$refs.homeMainDialog.openDialog()"
-              ) Записаться
+            AppointmentButton.home-main-inner__view-content_buttons__appointment-button
             el-button(
               size="large"
               type="primary"
@@ -120,6 +115,9 @@ $banner-height = 234px;
           font-weight normal
           margin-bottom 7px
           color #9684A3
+        &_buttons
+          &__appointment-button
+            margin-right 20px
 
       &-advantages
       &-stocks

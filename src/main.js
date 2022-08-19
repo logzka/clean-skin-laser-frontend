@@ -13,17 +13,27 @@ import store from './store';
 
 import globalProperties from './global-properties';
 
+// Global Components
+import AppointmentButton from './global-components/AppointmentButton.vue';
+
 const app = createApp(App);
 
 app.config.globalProperties.$formatDate = globalProperties.formatDate;
 
+/** Vue Emitter (for no $on, $off directives in Vue 3)
+ * https://v3.ru.vuejs.org/ru/guide/migration/events-api.html#события-корневого-компонента
+ */
 const emitter = new Emitter();
 app.config.globalProperties.$emitter = emitter;
 
-// eslint-disable-next-line no-restricted-syntax
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+const ElementPlusIconsVueEntries = Object.entries(ElementPlusIconsVue) || [];
+ElementPlusIconsVueEntries.forEach((entry) => {
+  const [key, component] = entry;
   app.component(key, component);
-}
+});
+
+// Registration of Global Components
+app.component('AppointmentButton', AppointmentButton);
 
 app
   .use(store)
