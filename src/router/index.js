@@ -10,6 +10,8 @@ import HomeMainContacts from '../components/home/home-main/HomeMainContacts.vue'
 
 import Home from '../views/Home.vue';
 import Admin from '../views/Admin.vue';
+import Manager from '../views/Manager.vue';
+import LoginView from '../views/LoginView.vue';
 
 const routes = [
   {
@@ -48,6 +50,16 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: Admin,
+  },
+  {
+    path: '/manager',
+    name: 'manager',
+    component: Manager,
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView,
   },
 ];
 
