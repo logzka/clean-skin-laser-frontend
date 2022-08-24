@@ -10,11 +10,4 @@ module.exports = defineConfig({
       .loader('pug-html-loader')
       .end();
   },
-
-  pages: {
-    index: {
-      entry: 'src/main.js',
-      title: 'CS Laser Studio',
-    },
-  },
 });
