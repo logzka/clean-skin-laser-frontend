@@ -1,12 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-// import HomeMain from '../components/home/HomeMain.vue';
+// HOME
 import HomeMainCalendar from '../components/home/home-main/HomeMainCalendar.vue';
 import HomeMainMasters from '../components/home/home-main/HomeMainMasters.vue';
 import HomeMainStudio from '../components/home/home-main/HomeMainStudio.vue';
 import HomeMainLasers from '../components/home/home-main/HomeMainLasers.vue';
 import HomeMainPrice from '../components/home/home-main/HomeMainPrice.vue';
 import HomeMainContacts from '../components/home/home-main/HomeMainContacts.vue';
+
+// ADMIN
+import AdminStocks from '../components/admin/AdminStocks.vue';
 
 import Home from '../views/Home.vue';
 import Admin from '../views/Admin.vue';
@@ -50,6 +53,13 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: Admin,
+    children: [
+      {
+        path: '/admin/stocks',
+        name: 'AdminStocks',
+        component: AdminStocks,
+      },
+    ],
   },
   {
     path: '/manager',
