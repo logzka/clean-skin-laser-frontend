@@ -1,6 +1,7 @@
 /** UI Buttons */
 .el-button
-    min-width 148px
+    &:not(&__my-link)
+        min-width 148px
     border-radius var(--el-border-radius-small)
     &:hover
         box-shadow var(--el-box-shadow-light)
