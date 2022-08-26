@@ -88,7 +88,7 @@ export default {
           this.login();
 
           ElNotification({
-            message: `Поздравляем, Вы успешно зашли в систему ${this.loginSystem}`,
+            message: `Поздравляем, Вы успешно вошли в систему ${this.loginSystem}`,
             type: 'success',
           });
 
@@ -124,8 +124,10 @@ export default {
       &-item
         &__label
           padding 0
-          margin-right 15px
+          // margin-right 15px
           color #fff
+          width 100px
+          justify-content flex-start
     &-form
       &_entry-button
         margin 50px 0 0

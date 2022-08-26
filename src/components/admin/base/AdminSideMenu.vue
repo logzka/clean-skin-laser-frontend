@@ -4,9 +4,6 @@
         el-menu.el-menu-vertical-demo(
             :default-active="$route.path"
             :collapse="isCollapse"
-
-            @open="handleOpen"
-            @close="handleClose"
             )
             el-menu-item(
                 index="/admin/banner"
@@ -66,21 +63,29 @@
                     ArrowLeftBold(v-if="!isCollapse")
                     ArrowRightBold(v-else)
                 template(#title)
-                    span(v-if="!isCollapse") Закрыть
-                    span(v-else) Открыть
+                    span(v-if="!isCollapse") Свернуть
+                    span(v-else) Развернуть
 </template>
 
 <script>
 export default {
+  computed: {
+  },
+
   data: () => ({
     isCollapse: false,
   }),
 
-  methods: {
-    handleOpen() {
-    },
+  created() {
+    this.isCollapse = localStorage.getItem('AdminSidebarCollapse') === '1';
+  },
 
-    handleClose() {
+  methods: {
+  },
+
+  watch: {
+    isCollapse(value) {
+      localStorage.setItem('AdminSidebarCollapse', value ? '1' : '0');
     },
   },
 };
@@ -94,6 +99,7 @@ export default {
     -moz-border-image -moz-linear-gradient(#2CC990, #9684A3)
     -webkit-border-image -webkit-linear-gradient(45deg, #2CC990, #9684A3)
     border-image-slice 1
+    padding 26px 0
     &:not(.el-menu--collapse)
         width 240px
 </style>

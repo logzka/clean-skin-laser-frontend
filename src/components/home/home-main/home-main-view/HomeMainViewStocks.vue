@@ -28,7 +28,7 @@ export default {
   methods: {
     getStockBanner(stock) {
       return {
-        backgroundImage: `url('@${stock.route}')`,
+        backgroundImage: `url('@${stock.image}')`,
       };
     },
   },

@@ -1,8 +1,9 @@
 <template lang="pug">
 .admin
-  .admin__inner.flex
+  .flex
     admin-side-menu
-    router-view
+    .admin__inner.w-100
+      router-view
 </template>
 
 <script>
@@ -15,3 +16,9 @@ export default {
   },
 };
 </script>
+
+<style lang="stylus" scoped>
+.admin
+  &__inner
+    padding 40px
+</style>
