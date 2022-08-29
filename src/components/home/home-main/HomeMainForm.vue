@@ -17,7 +17,7 @@
       el-input(
         v-model="ruleForm.name"
         size="large"
-        aria-label="name"
+        :aria-label="'name'"
         )
 
     el-form-item(
@@ -27,7 +27,7 @@
       el-input(
         v-model="ruleForm.phone"
         size="large"
-        aria-label="phone number"
+        :aria-label="'phone number'"
         )
 
     el-form-item(
@@ -115,7 +115,7 @@
       el-input(
         v-model="ruleForm.desc"
         type="textarea"
-        aria-label="comment"
+        :aria-label="'comment'"
         )
 
     el-form-item(align="end")
