@@ -14,6 +14,7 @@
             .flex.space-between
                 img.po-sticky(
                     :src="laser.photo"
+                    alt="лазер"
                     )
 
                 .home-main-lasers__inner_list__table

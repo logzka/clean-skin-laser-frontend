@@ -12,10 +12,12 @@
                 el-button-group
                     el-button(
                         size="small"
+                        aria-label="Сегодня в календаре"
                         @click="selectDate('today'),getCalendarSchedule(),popoverVisible=false"
                         ) Сегодня
                     el-button(
                         size="small"
+                        aria-label="След. месяц в календаре"
                         @click="selectDate('next-month'),getCalendarSchedule(),popoverVisible=false"
                         ) След. месяц
 
@@ -81,8 +83,9 @@
 
             .home-main-calendar__inner_close.flex.space-end
                 el-button(
-                    @click="popoverVisible = false"
-                    ) Закрыть
+                  aria-label="Закрыть"
+                  @click="popoverVisible = false"
+                  ) Закрыть
 </template>
 
 <script>

@@ -13,13 +13,13 @@ el-footer.home-footer(
       ul.home-footer-inner__social-info_list.flex
         li.home-footer-inner__social-info_list-item
           a(href="https://instagram.com/" target="_blank")
-            img(src="/img/instagram-white.svg")
+            img(src="/img/instagram-white.svg" alt="instagram ссылка")
         li.home-footer-inner__social-info_list-item
           a(href="/" target="_blank")
-            img(src="/img/telegram-white.svg")
+            img(src="/img/telegram-white.svg" alt="telegram ссылка")
         li.home-footer-inner__social-info_list-item
           a(href="https://vk.com/" target="_blank")
-            img(src="/img/vk-white.svg")
+            img(src="/img/vk-white.svg" alt="vk ссылка")
 
       .home-footer-inner__social-info_phone
         a(href="tel:+79604867349") +7 (960) 486 73 49
@@ -33,17 +33,19 @@ el-footer.home-footer(
       el-button(
         type="info"
         plain
+        aria-label="Администратор"
         @click="$router.push({ name: 'login', params: { login_as: 'admin' } })"
         ) Администратору
       el-button.m-0(
         type="info"
         plain
+        aria-label="Менеджер"
         @click="$router.push({ name: 'login', params: { login_as: 'manager' } })"
         ) Менеджеру
 </template>
 
 <script>
-import HomeFooterMenu from '@/components/home/home-footer/HomeFooterMenu.vue';
+import HomeFooterMenu from './home-footer/HomeFooterMenu.vue';
 
 export default {
   components: {
@@ -66,6 +68,7 @@ export default {
     &__social-info
       img
         width 28px
+        height 28px
       &_list
         &-item
           margin-right 15px

@@ -5,6 +5,8 @@
             :type="buttonType"
             :size="buttonSize"
 
+            aria-label="Записаться"
+
             @click="openHomeMainDialog(dataForDialog)"
             ) Записаться
 </template>

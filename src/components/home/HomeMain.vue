@@ -12,13 +12,13 @@ el-main.home-main
               href="https://instagram.com/"
               target="_blank"
               )
-              img(src="/img/instagram.svg")
+              img(src="/img/instagram.svg" alt="instagram ссылка")
           li.home-main-inner__view-social_list-item
             a(
               href="/"
               target="_blank"
               )
-              img(src="/img/telegram.svg")
+              img(src="/img/telegram.svg" alt="telegram ссылка")
 
       section.flex.space-between.f-wrap(style="margin-bottom: 200px;")
 
@@ -34,6 +34,7 @@ el-main.home-main
             el-button(
               size="large"
               type="primary"
+              aria-label="Система абонементов"
               ) Система абонементов
 
         .home-main-inner__view-banner
@@ -107,6 +108,7 @@ $banner-height = 234px;
             margin-right 0px
           img
             width 28px
+            height 28px
       &-content
         max-width 45%
         height $banner-height

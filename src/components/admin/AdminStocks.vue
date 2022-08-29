@@ -22,6 +22,7 @@
                             v-model="stockRuleForm.name"
                             size="large"
                             clearable
+                            aria-label="Описание/Название"
                             )
 
                     el-form-item(
@@ -47,11 +48,13 @@
                             size="large"
                             plain
                             type="success"
+                            aria-label="Сохранить"
                             @click="submitForm()"
                             ) Сохранить
                         el-button(
                             size="large"
                             plain
+                            aria-label="Очистить"
                             @click="clearStockForm()"
                             ) Очистить
 
@@ -70,11 +73,13 @@
                         template(v-slot="row")
                             img.admin-stocks__inner-table_stock-image(
                                 :src="row.row.image"
+                                alt="Акция студии лазера."
                                 )
                     el-table-column(width="120")
                         template(v-slot="row")
                             el-button.el-button__my-link(
                                 size="small"
+                                aria-label="Редактировать"
                                 @click="editStock(row)"
                                 )
                                 el-icon
@@ -83,6 +88,7 @@
                                 type="danger"
                                 size="small"
                                 plain
+                                aria-label="Удалить"
                                 @click="confirmDeleteStock(row)"
                                 )
                                 el-icon
