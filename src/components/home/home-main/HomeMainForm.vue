@@ -17,7 +17,7 @@
       el-input(
         v-model="ruleForm.name"
         size="large"
-        aria-label="Имя"
+        aria-label="name"
         )
 
     el-form-item(
@@ -27,7 +27,7 @@
       el-input(
         v-model="ruleForm.phone"
         size="large"
-        aria-label="Номер телефона"
+        aria-label="phone number"
         )
 
     el-form-item(
@@ -115,7 +115,7 @@
       el-input(
         v-model="ruleForm.desc"
         type="textarea"
-        aria-label="Комментарий"
+        aria-label="comment"
         )
 
     el-form-item(align="end")
@@ -123,7 +123,10 @@
         size="large"
         type="primary"
         plain
-        aria-label="Отправить"
+
+        aria-label="send"
+        name="send"
+
         @click="submitForm()"
         ) Отправить
 </template>

@@ -34,7 +34,8 @@ el-main.home-main
             el-button(
               size="large"
               type="primary"
-              aria-label="Система абонементов"
+              aria-label="price system"
+              name="priceSystem"
               ) Система абонементов
 
         .home-main-inner__view-banner
