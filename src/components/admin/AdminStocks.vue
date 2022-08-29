@@ -22,7 +22,7 @@
                             v-model="stockRuleForm.name"
                             size="large"
                             clearable
-                            aria-label="description/name"
+                            :aria-label="'description/name'"
                             )
 
                     el-form-item(
