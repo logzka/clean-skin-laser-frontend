@@ -33,10 +33,10 @@ module.exports = defineConfig({
       rules: [
         {
           test: /\.(png|webp|svg)(\?.*)?$/,
-          type: 'asset',
-          generator: {
-            filename: 'img/[name][ext]',
-          },
+          type: 'images',
+          // generator: {
+          //   filename: 'img/[name][ext]',
+          // },
         },
       ],
     },

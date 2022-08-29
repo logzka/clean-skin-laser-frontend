@@ -12,13 +12,13 @@ el-main.home-main
               href="https://instagram.com/"
               target="_blank"
               )
-              img(src="@/img/instagram.svg")
+              img(src="/img/instagram.svg")
           li.home-main-inner__view-social_list-item
             a(
               href="/"
               target="_blank"
               )
-              img(src="@/img/telegram.svg")
+              img(src="/img/telegram.svg")
 
       section.flex.space-between.f-wrap(style="margin-bottom: 200px;")
 

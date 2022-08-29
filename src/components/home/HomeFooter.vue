@@ -13,13 +13,13 @@ el-footer.home-footer(
       ul.home-footer-inner__social-info_list.flex
         li.home-footer-inner__social-info_list-item
           a(href="https://instagram.com/" target="_blank")
-            img(src="@/img/instagram-white.svg")
+            img(src="/img/instagram-white.svg")
         li.home-footer-inner__social-info_list-item
           a(href="/" target="_blank")
-            img(src="@/img/telegram-white.svg")
+            img(src="/img/telegram-white.svg")
         li.home-footer-inner__social-info_list-item
           a(href="https://vk.com/" target="_blank")
-            img(src="@/img/vk-white.svg")
+            img(src="/img/vk-white.svg")
 
       .home-footer-inner__social-info_phone
         a(href="tel:+79604867349") +7 (960) 486 73 49
