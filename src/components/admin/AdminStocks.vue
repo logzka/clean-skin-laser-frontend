@@ -22,7 +22,7 @@
                             v-model="stockRuleForm.name"
                             size="large"
                             clearable
-                            aria-label="Описание/Название"
+                            aria-label="description/name"
                             )
 
                     el-form-item(
@@ -48,13 +48,15 @@
                             size="large"
                             plain
                             type="success"
-                            aria-label="Сохранить"
+                            aria-label="save"
+                            name="save"
                             @click="submitForm()"
                             ) Сохранить
                         el-button(
                             size="large"
                             plain
-                            aria-label="Очистить"
+                            aria-label="clean"
+                            name="clean"
                             @click="clearStockForm()"
                             ) Очистить
 
@@ -79,7 +81,8 @@
                         template(v-slot="row")
                             el-button.el-button__my-link(
                                 size="small"
-                                aria-label="Редактировать"
+                                aria-label="edit"
+                                name="edit"
                                 @click="editStock(row)"
                                 )
                                 el-icon
@@ -88,7 +91,8 @@
                                 type="danger"
                                 size="small"
                                 plain
-                                aria-label="Удалить"
+                                aria-label="delete"
+                                name="delete"
                                 @click="confirmDeleteStock(row)"
                                 )
                                 el-icon

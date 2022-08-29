@@ -19,7 +19,7 @@
           el-input(
             v-model="loginRuleForm.login"
             size="large"
-            aria-label="Логин"
+            aria-label="login"
             )
 
         el-form-item(
@@ -29,14 +29,17 @@
           el-input(
             v-model="loginRuleForm.password"
             size="large"
-            aria-label="Пароль"
+            aria-label="password"
             )
 
         el-form-item.login-view__inner-form_entry-button
           el-button(
             size="large"
             plain
-            aria-label="Войти"
+
+            aria-label="enter"
+            name="enter"
+
             @click="submitForm()"
             ) Войти
 </template>

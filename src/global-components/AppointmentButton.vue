@@ -5,7 +5,8 @@
             :type="buttonType"
             :size="buttonSize"
 
-            aria-label="Записаться"
+            aria-label="sign up"
+            name="signUp"
 
             @click="openHomeMainDialog(dataForDialog)"
             ) Записаться

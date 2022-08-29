@@ -33,13 +33,15 @@ el-footer.home-footer(
       el-button(
         type="info"
         plain
-        aria-label="Администратор"
+        aria-label="admin"
+        name="admin"
         @click="$router.push({ name: 'login', params: { login_as: 'admin' } })"
         ) Администратору
       el-button.m-0(
         type="info"
         plain
-        aria-label="Менеджер"
+        aria-label="manager"
+        anme="manager"
         @click="$router.push({ name: 'login', params: { login_as: 'manager' } })"
         ) Менеджеру
 </template>
