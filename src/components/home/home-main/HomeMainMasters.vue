@@ -49,7 +49,9 @@
                           buttonType="primary"
                           )
                 .box-card__content.flex
-                    .box-card__content-photo
+                    .box-card__content-photo(
+                      :style="{ backgroundImage: `url('${master.master.photo}')` }"
+                      )
                     .box-card__content-text
                         h3 Процедуры
                         | {{ divideServices(master.master.services) }}
@@ -139,7 +141,6 @@ export default {
                     height auto
                     margin-right 25px
                     border-radius 2px
-                    background-image url('@/assets/masters/vospanova.jpeg')
                     background-size cover
                     background-repeat no-repeat
                     background-position center

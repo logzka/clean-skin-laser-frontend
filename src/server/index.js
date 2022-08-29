@@ -1,15 +1,15 @@
 const stocksApi = [{
   id: 1,
   name: 'stock_1',
-  image: '@/assets/stocks/htmlconvd-cz2YNf53x1.jpeg',
+  image: '/img/laser-gone-tattoo-removal.webp',
 }, {
   id: 2,
   name: 'stock_2',
-  image: '@/assets/stocks/plakat27.jpeg',
+  image: '/img/laser-gone-tattoo-removal.webp',
 }, {
   id: 3,
   name: 'stock_3',
-  image: '@/assets/stocks/stroenie-kozhi_.png',
+  image: '/img/laser-gone-tattoo-removal.webp',
 }];
 
 const servicesApi = [{
@@ -33,7 +33,7 @@ const mastersApi = [
       first_name: 'Мария',
       last_name: 'Воспанова',
       services: ['nbuv7vcrnuy74', 'byg76fgvf64f'],
-      photo: 'masters/vospanova.jpeg',
+      photo: '/img/vospanova.webp',
       skills: 'Следует отметить, что социально-экономическое развитие, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для распределения внутренних резервов и ресурсов.',
       experience: '5 лет',
       closest_free_dates: [
@@ -48,7 +48,7 @@ const mastersApi = [
       first_name: 'Валерий',
       last_name: 'Иванов',
       services: ['hgfd76545hgf', 'byg76fgvf64f'],
-      photo: 'masters/ivanov.jpeg',
+      photo: '/img/ivanov.webp',
       skills: 'Следует отметить, что социально-экономическое развитие, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для распределения внутренних резервов и ресурсов. Разнообразный и богатый опыт говорит нам, что сплочённость команды профессионалов однозначно фиксирует необходимость экспериментов, поражающих по своей масштабности и грандиозности. А ещё акционеры крупнейших компаний могут быть преданы социально-демократической анафеме.',
       experience: 'Более 10 лет',
       closest_free_dates: [
@@ -123,19 +123,19 @@ const scheduleApi = [{
 }];
 
 const studioApi = [{
-  photo: '',
+  photo: '/img/studio_1.webp',
   label: 'Ресепшн',
   title: 'Добро пожаловать на территорию чистой и здоровой кожи',
   desc: 'Следует отметить, что социально-экономическое развитие, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для распределения внутренних резервов и ресурсов.',
 }, {
-  photo: '',
+  photo: '/img/studio_1.webp',
   label: 'Кабинет лазерной эпиляции и косметологии',
   title: 'Вас приветствует кабинет лазерной косметологии',
   desc: 'Разнообразный и богатый опыт говорит нам, что сплочённость команды профессионалов однозначно фиксирует необходимость экспериментов, поражающих по своей масштабности и грандиозности. А ещё акционеры крупнейших компаний могут быть преданы социально-демократической анафеме.',
 }];
 
 const lasersApi = [{
-  photo: '/img/laser_combaine.gif',
+  photo: '/img/laser_combaine.webp',
   name: 'Неодимовый лазер + Элос эпилятор Lasertech COMBINE Premium Edition',
   desc: [{
     title: 'Неодимовый лазер (короктоимпульсный, Nd:YAG)',

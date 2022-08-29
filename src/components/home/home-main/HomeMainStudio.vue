@@ -10,6 +10,7 @@
             )
             el-carousel-item.flex(
                 v-for="item in studio"
+                :style="{ backgroundImage: `url('${item.photo}')` }"
                 )
                 h3.m0 {{ item.label }}
 
@@ -67,7 +68,6 @@ export default {
                 //TODO: Разобраться с высотой контейнера.
                 min-height 300px
             &__item
-                background-image url('@/assets/studio/studio_1.webp')
                 border-radius: 2px;
                 background-size: cover;
                 background-repeat: no-repeat;

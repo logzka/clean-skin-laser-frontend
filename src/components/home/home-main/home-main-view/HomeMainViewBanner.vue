@@ -41,7 +41,7 @@ $banner-height = 234px
     &__inner
         width 100%
         height 100%
-        background-image url('@/assets/laser-gone-tattoo-removal.jpeg')
+        background-image url('@/img/laser-gone-tattoo-removal.webp')
         background-size cover
         background-repeat no-repeat
         background-position left top

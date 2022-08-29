@@ -195,7 +195,7 @@ export default {
     },
 
     async submitForm() {
-      await this.$refs.form.validate((valid, fields) => {
+      await this.$refs.form.validate((valid) => {
         if (valid) {
           ElNotification({
             message: 'Спасибо. Ваши данные успешно отправлены.',
@@ -204,8 +204,6 @@ export default {
 
           this.$refs.form.resetFields();
         } else {
-          console.log('error submit!', fields);
-
           ElNotification({
             message: 'Заполните все обязательные поля.',
             type: 'error',
@@ -223,7 +221,6 @@ export default {
     },
 
     setFormData(formData) {
-      console.log(formData);
       this.ruleForm = formData || {};
     },
 

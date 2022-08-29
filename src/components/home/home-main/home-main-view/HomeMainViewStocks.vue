@@ -5,6 +5,7 @@
     )
     el-carousel-item.flex(
       v-for="stock in stocks"
+      :style="{ backgroundImage: `url('${stock.image}'` }"
       )
       h3 {{ stock.name }}
 </template>
@@ -37,7 +38,6 @@ export default {
 
 <style lang="stylus" scoped>
 .el-carousel__item
-  background-image url('@/assets/laser-gone-tattoo-removal.jpeg')
   border-radius: 2px;
   background-size: cover;
   background-repeat: no-repeat;

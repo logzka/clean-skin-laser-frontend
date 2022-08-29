@@ -1,4 +1,4 @@
-import server from '@/server';
+import server from '../server';
 
 const { servicesApi } = server;
 
@@ -32,7 +32,7 @@ export default {
 
         commit('SET_SERVICES', services);
       } catch (error) {
-        console.error(error);
+        throw Error(error);
       }
     },
   },

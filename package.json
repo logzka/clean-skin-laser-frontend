@@ -2,7 +2,7 @@
   "name": "clean-skin-laser",
   "version": "0.1.0",
   "engines": {
-    "node": "12.13"
+    "node": "18.1.0"
   },
   "private": true,
   "scripts": {
@@ -16,6 +16,10 @@
     "@vue/cli-service": "~5.0.0",
     "core-js": "^3.24.1",
     "element-plus": "^2.2.13",
+    "image-minimizer-webpack-plugin": "^3.3.0",
+    "imagemin": "^8.0.1",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-svgo": "^10.0.1",
     "tiny-emitter": "^2.1.0",
     "vue": "^3.2.13",
     "vue-router": "^4.1.3",

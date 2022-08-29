@@ -1,4 +1,4 @@
-import server from '@/server';
+import server from '../server';
 
 const { scheduleApi } = server;
 
@@ -39,7 +39,7 @@ export default {
 
         commit('SET_SCHEDULE', schedule);
       } catch (error) {
-        console.error(error);
+        throw Error(error);
       }
     },
 

@@ -40,7 +40,7 @@
                                 em нажмите для загрузки
 
                             template(#tip)
-                                .el-upload__tip jpg/png/gif форматы
+                                .el-upload__tip png/webp форматы
 
                     el-form-item.admin-stocks__inner-form_add-button
                         el-button(
@@ -69,7 +69,7 @@
                     el-table-column(width="160")
                         template(v-slot="row")
                             img.admin-stocks__inner-table_stock-image(
-                                src="@/assets/laser-gone-tattoo-removal.jpeg"
+                                :src="row.row.image"
                                 )
                     el-table-column(width="120")
                         template(v-slot="row")
@@ -159,12 +159,10 @@ export default {
     },
 
     async submitForm() {
-      await this.$refs.stockForm.validate((valid, fields) => {
+      await this.$refs.stockForm.validate((valid) => {
         if (valid) {
           this.saveStock();
         } else {
-          console.log('error submit!', fields);
-
           ElNotification({
             message: 'Заполните все обязательные поля.',
             type: 'error',

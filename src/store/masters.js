@@ -1,4 +1,4 @@
-import server from '@/server';
+import server from '../server';
 
 const { mastersApi } = server;
 
@@ -38,7 +38,7 @@ export default {
 
         commit('SET_MASTERS', masters);
       } catch (error) {
-        console.error(error);
+        throw Error(error);
       }
     },
   },

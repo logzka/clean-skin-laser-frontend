@@ -1,4 +1,4 @@
-import server from '@/server';
+import server from '../server';
 
 const { lasersApi } = server;
 
@@ -20,7 +20,7 @@ export default {
 
         commit('SET_LASERS', lasers);
       } catch (error) {
-        console.error(error);
+        throw Error(error);
       }
     },
   },

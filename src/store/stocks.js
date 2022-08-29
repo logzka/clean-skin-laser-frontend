@@ -1,4 +1,4 @@
-import server from '@/server';
+import server from '../server';
 
 const { stocksApi } = server;
 
@@ -22,7 +22,7 @@ export default {
 
         commit('SET_STOCKS', stocks);
       } catch (error) {
-        console.error(error);
+        throw Error(error);
       }
     },
 
@@ -42,7 +42,7 @@ export default {
 
         commit('SET_STOCKS', currentStocks);
       } catch (error) {
-        console.error(error);
+        throw Error(error);
       }
     },
 
@@ -62,7 +62,7 @@ export default {
 
         commit('SET_STOCKS', currentStocks);
       } catch (error) {
-        console.error(error);
+        throw Error(error);
       }
     },
 
@@ -79,7 +79,7 @@ export default {
 
         commit('SET_STOCKS', stocks);
       } catch (error) {
-        console.error(error);
+        throw Error(error);
       }
     },
   },

@@ -83,7 +83,7 @@ export default {
     },
 
     async submitForm() {
-      await this.$refs.loginForm.validate((valid, fields) => {
+      await this.$refs.loginForm.validate((valid) => {
         if (valid) {
           this.login();
 
@@ -94,8 +94,6 @@ export default {
 
           this.$router.push(`/${this.$route.params?.login_as}`);
         } else {
-          console.log('error submit!', fields);
-
           ElNotification({
             message: 'Заполните все обязательные поля.',
             type: 'error',

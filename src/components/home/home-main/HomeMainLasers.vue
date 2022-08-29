@@ -13,7 +13,7 @@
             )
             .flex.space-between
                 img.po-sticky(
-                    src="@/assets/lasers/laser_combaine.gif"
+                    :src="laser.photo"
                     )
 
                 .home-main-lasers__inner_list__table
