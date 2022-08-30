@@ -27,6 +27,12 @@ export default {
   },
 
   methods: {
+    /**
+     * Get stock bunner image
+     *
+     * @param {Object} stock Current stock data
+     * @return {Object} Stock style background image
+     */
     getStockBanner(stock) {
       return {
         backgroundImage: `url('@${stock.image}')`,

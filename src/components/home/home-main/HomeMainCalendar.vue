@@ -135,30 +135,73 @@ export default {
   },
 
   methods: {
+    /**
+     * Select date in Calendar
+     *
+     * @param {String} period Current calendar period
+     */
     selectDate(period) {
       this.$refs.calendar.selectDate(period);
     },
 
+    /**
+     * Formatter for time table
+     *
+     * @param {Object} row Current table row
+     * @param {Object} column Current table column
+     * @param {String} cellValue Current cell value
+     *
+     * @return {String} Formatted time value
+     */
     getTime(row, column, cellValue) {
       return this.$formatDate(cellValue, 'HH:mm');
     },
 
+    /**
+     * Formatter for master full name table
+     *
+     * @param {Object} row Current table row
+     * @param {Object} column Current table column
+     * @param {Object} cellValue Current cell value
+     *
+     * @return {String} Formatted full name value
+     */
     getFullMasterName(row, column, cellValue) {
       return `${cellValue.first_name} ${cellValue.last_name}`;
     },
 
+    /**
+     * Set services to names
+     *
+     * @param {[Object]} services Services list
+     * @return {[Object]} Services names list
+     */
     setServicesToNames(services) {
       return (services || [])
         .map((serviceId) => this.services
           .find((service) => service.id === serviceId)?.name) || [];
     },
 
+    /**
+     * Divide services
+     *
+     * @param {Object} row Current table row
+     * @param {Object} column Current table column
+     * @param {Object} cellValue Current cell value
+     *
+     * @return {String} Services names
+     */
     divideServices(row, column, cellValue) {
       const formattedServicesToNames = this.setServicesToNames(cellValue.services);
 
       return formattedServicesToNames.join(', ');
     },
 
+    /**
+     * Get calendar schedule
+     *
+     * @param {[Object]} dateRange Current date range
+     */
     getCalendarSchedule(dateRange) {
       this.loadingCalendarSchedule = true;
 
@@ -172,6 +215,11 @@ export default {
       }, 1000);
     },
 
+    /**
+     * Get free dates calendar schedule
+     *
+     * @param {String} date Current date
+     */
     getFreeSchedule(date) {
       // TODO: Change after back-end will connect
       this.popoverVisible = date && this.hasFree(date);
@@ -187,11 +235,23 @@ export default {
       }, 1000);
     },
 
+    /**
+     * Check for free by calendar date
+     *
+     * @param {String} date Current date
+     * @return {Boolean} Free flag
+     */
     hasFree(date) {
       return this.preSchedule
         .some((el) => this.$formatDate(el.date) === this.$formatDate(date));
     },
 
+    /**
+     * Create data for appointment button
+     *
+     * @param {Object} row Current table row
+     * @return {Object} Data for appointment button
+     */
     createDataForAppointmentButton({ row }) {
       return {
         date: row.date,

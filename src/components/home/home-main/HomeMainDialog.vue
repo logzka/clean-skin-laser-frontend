@@ -21,6 +21,11 @@ export default {
   }),
 
   methods: {
+    /**
+     * Open this dialog
+     *
+     * @param {Object} formData Current data for this dialog
+     */
     openDialog(formData) {
       this.dialogVisible = true;
 

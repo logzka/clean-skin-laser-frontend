@@ -60,8 +60,8 @@
                             @click="clearStockForm()"
                             ) Очистить
 
-            .admin-stocks__inner-table.w-100
-                el-table.w-100(
+            .admin-stocks__inner-table
+                el-table(
                     :data="preStocks"
                     stripe
                     height="calc(100vh - 148px)"
@@ -69,6 +69,7 @@
                     el-table-column(
                         prop="name"
                         label="Доступные акции"
+                        width="320"
                         :formatter="(row, column, cellValue) => cellValue.length ? cellValue : '--'"
                         )
                     el-table-column(width="160")
@@ -146,6 +147,9 @@ export default {
   },
 
   methods: {
+    /**
+     * Save new stock
+     */
     saveStock() {
       this.loadingStocks = true;
 
@@ -168,6 +172,9 @@ export default {
       }, 2000);
     },
 
+    /**
+     * Submit stock form
+     */
     async submitForm() {
       await this.$refs.stockForm.validate((valid) => {
         if (valid) {
@@ -181,10 +188,16 @@ export default {
       });
     },
 
+    /**
+     * Reset stock form
+     */
     resetForm() {
       if (this.$refs?.stockForm) this.$refs.stockForm.resetFields();
     },
 
+    /**
+     * Reset stock form data
+     */
     clearStockForm() {
       this.stockRuleForm = {
         id: null,
@@ -195,6 +208,11 @@ export default {
       this.resetForm();
     },
 
+    /**
+     * Edit current stock
+     *
+     * @param {Object} row Current stock data
+     */
     editStock({ row }) {
       this.stockRuleForm = JSON
         .parse(JSON
@@ -203,6 +221,11 @@ export default {
       document.getElementById('stockName').focus();
     },
 
+    /**
+     * Confirm to delete current stock
+     *
+     * @param {Object} row Current stock data
+     */
     confirmDeleteStock({ row }) {
       ElMessageBox.confirm(
         'Это действие необратимо. Продолжить?',
@@ -224,6 +247,10 @@ export default {
         });
     },
 
+    /**
+     * Delete current stock
+     * @param {Object} row Current stock data
+     */
     deleteStock(row) {
       this.loadingStocks = true;
 

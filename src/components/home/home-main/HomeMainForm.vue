@@ -192,6 +192,9 @@ export default {
   }),
 
   methods: {
+    /**
+     * Loading all masters
+     */
     loadingMasters() {
       this.loadingDropdownMasters = true;
 
@@ -201,6 +204,9 @@ export default {
       }, 2000);
     },
 
+    /**
+     * Submit user form
+     */
     async submitForm() {
       await this.$refs.form.validate((valid) => {
         if (valid) {
@@ -219,18 +225,37 @@ export default {
       });
     },
 
+    /**
+     * Reset user form
+     */
     resetForm() {
       this.$refs.form.resetFields();
     },
 
+    /**
+     * Formatter for user full name
+     *
+     * @param {Object} master Current master Data
+     */
     getFullMasterName({ master }) {
       return `${master.first_name} ${master.last_name}`;
     },
 
+    /**
+     * Set user form data
+     *
+     * @param {Object} formData User form data
+     */
     setFormData(formData) {
       this.ruleForm = formData || {};
     },
 
+    /**
+     * Get disabled dates for current calendar schedule
+     *
+     * @param {String} date Current date
+     * @return {Boolean} Disabled flag
+     */
     getDisabledDates(date) {
       return this.selectedMaster && !this.masterClosestFreeDates
         .some((freeDate) => this.$formatDate(freeDate) === this.$formatDate(date));

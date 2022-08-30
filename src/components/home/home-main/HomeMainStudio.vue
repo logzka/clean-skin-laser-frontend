@@ -51,6 +51,11 @@ export default {
   },
 
   methods: {
+    /**
+     * Set current studio item
+     *
+     * @param {Number|String} itemIndex Current Item index
+     */
     setCurrentStudioItem(itemIndex) {
       this.currentStudioItem = this.studio[itemIndex] || null;
     },

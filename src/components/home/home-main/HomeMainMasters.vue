@@ -109,12 +109,27 @@ export default {
   },
 
   methods: {
+    /**
+     * Set services to names
+     *
+     * @param {[Object]} services Services list
+     * @return {[Object]} Services names list
+     */
     setServicesToNames(services) {
       return (services || [])
         .map((serviceId) => this.services
           .find((service) => service.id === serviceId)?.name) || [];
     },
 
+    /**
+     * Divide services
+     *
+     * @param {Object} row Current table row
+     * @param {Object} column Current table column
+     * @param {Object} cellValue Current cell value
+     *
+     * @return {String} Services names
+     */
     divideServices(masterServices) {
       const formattedServicesToNames = this.setServicesToNames(masterServices);
 

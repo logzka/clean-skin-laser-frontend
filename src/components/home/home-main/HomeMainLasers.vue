@@ -58,9 +58,6 @@ export default {
   },
 
   methods: {
-    getLaserImage(laser) {
-      return laser.photo;
-    },
   },
 };
 </script>

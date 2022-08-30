@@ -47,6 +47,11 @@ export default {
   },
 
   methods: {
+    /**
+     * Open home Dialog
+     *
+     * @param {Object} dataForDialog Data for dialog
+     */
     openHomeMainDialog(dataForDialog = {}) {
       this.$emitter.emit('openHomeMainDialog', dataForDialog || {});
     },
