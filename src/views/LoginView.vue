@@ -77,6 +77,9 @@ export default {
   }),
 
   methods: {
+    /**
+     * Ljgin into admin/manager panel
+     */
     login() {
       this.loadingLogin = true;
 
@@ -88,6 +91,9 @@ export default {
       }, 2000);
     },
 
+    /**
+     * Submit login form
+     */
     async submitForm() {
       await this.$refs.loginForm.validate((valid) => {
         if (valid) {
@@ -108,6 +114,9 @@ export default {
       });
     },
 
+    /**
+     * Reset login form
+     */
     resetForm() {
       if (this.$refs?.loginForm) this.$refs.loginForm.resetFields();
     },

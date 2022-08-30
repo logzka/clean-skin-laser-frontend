@@ -17,6 +17,12 @@ export default {
   }),
 
   methods: {
+    /**
+     * Get tile style for animate
+     *
+     * @param {Number} item Current item number
+     * @return {Object} Tile style data
+     */
     getTileStyle(item) {
       const itemIndex = item - 1;
       const indexTop = Math.floor(itemIndex / 7);
