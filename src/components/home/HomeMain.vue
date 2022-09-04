@@ -4,25 +4,27 @@ el-main.home-main
 
     .home-main-inner__view(v-if="$route.path === '/'")
 
-      .home-main-inner__view-title.flex.space-between.align-center
-        h1 Clean Skin Laser Studio
-        ul.home-main-inner__view-social_list.flex
-          li.home-main-inner__view-social_list-item
-            a(
-              href="https://instagram.com/"
-              target="_blank"
-              )
-              img(src="/img/instagram.svg" alt="instagram ссылка")
-          li.home-main-inner__view-social_list-item
-            a(
-              href="/"
-              target="_blank"
-              )
-              img(src="/img/telegram.svg" alt="telegram ссылка")
-
       section.flex.space-between.f-wrap(style="margin-bottom: 200px;")
 
         .home-main-inner__view-content.flex.f-col.space-between.align-start
+
+          .home-main-inner__view-content_title.w-100.flex.space-between.align-center
+            h1 Clean Skin Laser Studio
+
+            ul.home-main-inner__view-social_list.flex
+              li.home-main-inner__view-social_list-item.po-r
+                a.po-a(
+                  href="https://instagram.com/"
+                  target="_blank"
+                  style="background-image: url('/img/instagram.svg');"
+                  )
+              li.home-main-inner__view-social_list-item
+                a.po-a(
+                  href="/"
+                  target="_blank"
+                  style="background-image: url('/img/telegram.svg');"
+                  )
+
           .home-main-inner__view-content_text
             h2 Сведение/осветление татуировок
             h2 Удаление татуажа
@@ -91,28 +93,32 @@ export default {
 </script>
 
 <style lang="stylus">
-$banner-height = 234px;
-
 .home-main
   --el-main-padding 80px 20px
   width 1130px
   margin 0 auto
   &-inner
     &__view
-      &-title
-        margin-bottom 40px
-        color #9684A3
+      &-banner
+        height 360px
       &-social_list
         &-item
           margin-right 10px
+          width 28px
+          height 28px
           &:last-child
             margin-right 0px
-          img
-            width 28px
-            height 28px
+          a
+            width inherit
+            height inherit
+            background-repeat no-repeat
+            background-position center
+            background-size cover
       &-content
         max-width 45%
-        height $banner-height
+        &_title
+          color #9684A3
+          font-size 20px
         h2
           font-size 16px
           font-weight normal
