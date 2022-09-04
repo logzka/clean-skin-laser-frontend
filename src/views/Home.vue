@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import HomeHeader from '@/components/home/HomeHeader.vue';
-import HomeMain from '@/components/home/HomeMain.vue';
-import HomeFooter from '@/components/home/HomeFooter.vue';
+import HomeHeader from '../components/home/HomeHeader.vue';
+import HomeMain from '../components/home/HomeMain.vue';
+import HomeFooter from '../components/home/HomeFooter.vue';
 
 export default {
   name: 'home-view',
