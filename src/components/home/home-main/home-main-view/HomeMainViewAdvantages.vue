@@ -39,11 +39,8 @@ export default {
 
 <style lang="stylus" scoped>
 .home-main-view-advantages
-    width calc(100vw - 40px)
     &_item
-        margin-right 10%
-        &:last-child
-            margin-right 0
+        margin 0 5% 50px
         &-icon
             font-size 48px
             margin-bottom 20px

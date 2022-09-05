@@ -3,6 +3,8 @@
   el-form(
     ref="form"
 
+    :label-position="labelPosition"
+
     :model="ruleForm"
     :rules="rules"
 
@@ -186,10 +188,18 @@ export default {
       desc: '',
     },
 
+    labelPosition: 'left',
+
     rules,
 
     loadingDropdownMasters: false,
   }),
+
+  mounted() {
+    window.addEventListener('resize', (e) => {
+      this.labelPosition = e.target.innerWidth < 800 ? 'top' : 'left';
+    });
+  },
 
   methods: {
     /**
@@ -274,8 +284,6 @@ export default {
         margin-bottom 30px
       &:last-child
         margin-top 15px
-          .el-form-item__content
-            justify-content space-between
       &__label
         font-weight bold
 </style>

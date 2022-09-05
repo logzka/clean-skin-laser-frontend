@@ -73,3 +73,11 @@ export default {
     //         animation mosaic-tile-animate 4s linear infinite
     //         transition all .3s ease
 </style>
+
+<style lang="stylus" scoped>
+/** Less then 800 screen px */
+@media screen and (max-width: 800px)
+  .home-main-view-banner
+    video
+      width 100%
+</style>
