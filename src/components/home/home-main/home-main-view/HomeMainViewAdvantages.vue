@@ -39,6 +39,7 @@ export default {
 
 <style lang="stylus" scoped>
 .home-main-view-advantages
+    width calc(100vw - 40px)
     &_item
         margin-right 10%
         &:last-child

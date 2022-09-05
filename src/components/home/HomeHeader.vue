@@ -1,11 +1,18 @@
 <template lang="pug">
 el-header.home-header
   .home-header-inner.h-100.flex.space-between.align-center
+    el-icon.home-header__mobile-burger(
+      @click="this.$refs.homeHeaderMenu.openMobileHomeHeaderMenu()"
+      )
+      Expand
+
     router-link.home-header__logo(
         to="/"
     ) CS Laser Studio
 
-    home-header-menu
+    home-header-menu(
+      ref="homeHeaderMenu"
+      )
 
     a.el-button.el-button--success.el-button--large(
         href="tel:+79604867349"
@@ -47,6 +54,11 @@ export default {
       -webkit-background-clip text
       -webkit-text-fill-color transparent
       animation 8s logo-animation ease-in-out infinite
+    &__mobile-burger
+      display none
+      color #9684A3
+      font-size 26px
+      cursor pointer
 
 @keyframes logo-animation
     0%
@@ -55,4 +67,12 @@ export default {
       background-position 100% 50%
     100%
       background-position 0 50%
+
+@media screen and (max-width: 1100px)
+  .home-header
+    --el-header-padding 0 20px
+    &__mobile-burger
+      display block
+    &__logo
+      display none
 </style>

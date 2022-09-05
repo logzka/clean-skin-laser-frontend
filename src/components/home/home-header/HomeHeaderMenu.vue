@@ -1,5 +1,13 @@
 <template lang="pug">
-nav.header-nav-menu
+nav.header-nav-menu(
+  :class="headerNavMenuCollapseClass"
+  )
+    el-icon.po-a.header-nav-menu__mobile-close(
+      v-if="visibleHomeHeaderMenu"
+      @click="closeMobileHomeHeaderMenu()"
+      )
+      Fold
+
     ul.header-nav-menu__list.flex.space-between.align-center
         li.header-nav-menu__list-item(
             v-for="item in menuItems"
@@ -7,6 +15,7 @@ nav.header-nav-menu
             )
             router-link.b(
                 :to="item.link"
+                @click="closeMobileHomeHeaderMenu()"
                 ) {{ item.label }}
 </template>
 
@@ -33,16 +42,40 @@ const menuItems = [{
 
 export default {
   components: {},
+
+  computed: {
+    headerNavMenuCollapseClass() {
+      return this.visibleHomeHeaderMenu
+        ? 'header-nav-menu__open'
+        : 'header-nav-menu__close';
+    },
+  },
+
   data: () => ({
     menuItems,
+    visibleHomeHeaderMenu: false,
   }),
+
   methods: {
+    openMobileHomeHeaderMenu() {
+      this.visibleHomeHeaderMenu = true;
+    },
+
+    closeMobileHomeHeaderMenu() {
+      this.visibleHomeHeaderMenu = false;
+    },
   },
 };
 </script>
 
 <style lang="stylus" scoped>
 .header-nav-menu
+    &__mobile-close
+      font-size 28px
+      color #9684A3
+      top 60px
+      right 60px
+      cursor pointer
     &__list
         &-item
             cursor pointer
@@ -55,4 +88,24 @@ export default {
             .router-link-active.router-link-exact-active
                 color white
                 background-image linear-gradient(45deg, #2CC990, #9684A3)
+
+@media screen and (max-width: 1100px)
+  .header-nav-menu
+    width 100%
+    height 100vh
+    position absolute
+    transition all .5s ease-in-out
+    top 0
+    background #fff
+    &__list
+      flex-direction column
+      color #9684A3
+      &-item
+        margin 12px 0
+        &:first-child
+          margin-top 62px
+    &__open
+      left 0
+    &__close
+      left -100%
 </style>
