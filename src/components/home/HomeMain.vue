@@ -131,6 +131,7 @@ export default {
       &-advantages
       &-stocks
         margin-bottom 200px
+        width calc(100vw - 40px)
 
       &-form
         padding 4px
@@ -139,4 +140,11 @@ export default {
         &_inner
           background #fff
           padding 60px 100px
+
+@media screen and (max-width: 800px)
+  .home-main
+    &-inner
+      &__view
+        &-banner
+          display none
 </style>
