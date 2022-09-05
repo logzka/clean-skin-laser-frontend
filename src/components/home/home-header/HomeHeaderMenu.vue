@@ -9,6 +9,12 @@ nav.header-nav-menu(
       Fold
 
     ul.header-nav-menu__list.flex.space-between.align-center
+        li.header-nav-menu__list-item
+            router-link.b(
+                v-if="visibleHomeHeaderMenu"
+                to="/"
+                @click="closeMobileHomeHeaderMenu()"
+                ) Главная
         li.header-nav-menu__list-item(
             v-for="item in menuItems"
             :key="item.link"
@@ -73,8 +79,8 @@ export default {
     &__mobile-close
       font-size 28px
       color #9684A3
-      top 60px
-      right 60px
+      top 28px
+      right 28px
       cursor pointer
     &__list
         &-item

@@ -1,7 +1,7 @@
 <template lang="pug">
 el-footer.home-footer(
   )
-  .home-footer-inner.w-100.h-100.flex.space-between.align-center
+  .home-footer-inner.w-100.flex.space-between.align-center.f-wrap
     .home-footer-inner__copy
       h2 CS Laser Studio
       | &copy;&nbsp;Все права защищены,&nbsp;2022
@@ -79,4 +79,15 @@ export default {
       &_address
         .el-icon
           margin-right 5px
+</style>
+
+<style lang="stylus" scoped>
+/** Less then 800 screen px */
+@media screen and (max-width: 800px)
+  .home-footer
+    &-inner
+      &__copy
+      &__menu
+      &__social-info
+        margin-bottom 50px
 </style>
