@@ -5,6 +5,7 @@
         loop
         autoplay
         muted
+        playsinline
         )
     //- .home-main-view-banner__mosaic
         .home-main-view-banner__mosaic-tile(
