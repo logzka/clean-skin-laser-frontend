@@ -9,7 +9,8 @@
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.9",
@@ -47,6 +48,7 @@
     "pug-html-loader": "^1.1.5",
     "pug-plain-loader": "^1.1.0",
     "stylus": "^0.58.1",
-    "stylus-loader": "^7.0.0"
+    "stylus-loader": "^7.0.0",
+    "execa": "latest"
   }
 }
