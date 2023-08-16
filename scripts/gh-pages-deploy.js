@@ -16,7 +16,7 @@ const execa = require("execa");
 
     console.log("Pushing to gh-pages...");
     await execa("git", ["push", "origin", "gh-pages", "-f"]);
-    await execa("rm", ["-r", folderName]);
+    // await execa("rm", ["-r", folderName]);
     await execa("git", ["checkout", "-f", "main"]);
     await execa("git", ["branch", "-D", "gh-pages"]);
 
