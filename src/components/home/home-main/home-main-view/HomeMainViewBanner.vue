@@ -1,7 +1,7 @@
 <template lang="pug">
 .home-main-view-banner.h-100
-    video.h-100(
-        src="/img/banner-video.webm"
+    //- video.h-100(
+        src="clean-skin-laser-frontend/img/banner-video.webm"
         loop
         autoplay
         muted
@@ -13,8 +13,8 @@
 
             :style="getTileStyle(item)"
             )
-    //- .home-main-view-banner__inner(
-      style="background-image: url('/img/laser-gone-tattoo-removal.webp');"
+    .home-main-view-banner__inner.h-100(
+      style="background-image: url('https://pro-vosk.ru/wp-content/uploads/2020/06/Epilyatsiya-ili-depilyatsiya.jpg');"
       )
 </template>
 
@@ -53,13 +53,12 @@ export default {
     position relative
     video
       border-radius 2px
-    // &__inner
-    //     width 100%
-    //     height 100%
-    //     background-size cover
-    //     background-repeat no-repeat
-    //     background-position left top
-    //     border-radius 2px
+    &__inner
+      width 32em
+      background-size cover
+      background-repeat no-repeat
+      background-position center
+      border-radius 2px
     // &__mosaic
     //     &-tile
     //         width 78px

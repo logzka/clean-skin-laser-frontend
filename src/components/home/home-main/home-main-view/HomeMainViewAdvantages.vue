@@ -7,17 +7,17 @@
             v-html="'Сертифицированные<br/>специалисты'"
             )
 
-    .home-main-view-advantages_item.flex.f-col.align-center
-        el-icon.home-main-view-advantages_item-icon
-            SwitchButton
-        .home-main-view-advantages_item-text.b.text-center
-            a(
-                href="https://nettattoo.ru/"
-                target="_blank"
-                ) Качественное оборудование
-                    br
-                    | компании&nbsp;
-                    span.lasertech-link Lasertech
+    //- .home-main-view-advantages_item.flex.f-col.align-center
+    //-     el-icon.home-main-view-advantages_item-icon
+    //-         SwitchButton
+    //-     .home-main-view-advantages_item-text.b.text-center
+    //-         a(
+    //-             href="https://nettattoo.ru/"
+    //-             target="_blank"
+    //-             ) Качественное оборудование
+    //-                 br
+    //-                 | компании&nbsp;
+    //-                 span.lasertech-link Lasertech
 
     .home-main-view-advantages_item.flex.f-col.align-center
         el-icon.home-main-view-advantages_item-icon

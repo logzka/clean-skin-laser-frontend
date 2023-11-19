@@ -3,7 +3,7 @@ el-footer.home-footer(
   )
   .home-footer-inner.w-100.flex.space-between.align-center.f-wrap
     .home-footer-inner__copy
-      h2 CS Laser Studio
+      h2 D &#149; Epil Studio
       | &copy;&nbsp;Все права защищены,&nbsp;2022
 
     .home-footer-inner__menu
@@ -13,13 +13,13 @@ el-footer.home-footer(
       ul.home-footer-inner__social-info_list.flex
         li.home-footer-inner__social-info_list-item
           a(href="https://instagram.com/" target="_blank")
-            img(src="/img/instagram-white.svg" alt="instagram ссылка")
+            img(src="clean-skin-laser-frontend/img/instagram-white.svg" alt="instagram ссылка")
         li.home-footer-inner__social-info_list-item
           a(href="/" target="_blank")
-            img(src="/img/telegram-white.svg" alt="telegram ссылка")
+            img(src="clean-skin-laser-frontend/img/telegram-white.svg" alt="telegram ссылка")
         li.home-footer-inner__social-info_list-item
           a(href="https://vk.com/" target="_blank")
-            img(src="/img/vk-white.svg" alt="vk ссылка")
+            img(src="clean-skin-laser-frontend/img/vk-white.svg" alt="vk ссылка")
 
       .home-footer-inner__social-info_phone
         a(href="tel:+79604867349") +7 (960) 486 73 49

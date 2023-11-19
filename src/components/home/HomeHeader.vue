@@ -8,7 +8,7 @@ el-header.home-header
 
     router-link.home-header__logo(
         to="/"
-    ) CS Laser Studio
+    ) D &#149; Epil Studio
 
     home-header-menu(
       ref="homeHeaderMenu"

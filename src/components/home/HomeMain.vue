@@ -9,27 +9,29 @@ el-main.home-main
         .home-main-inner__view-main_content.flex.f-col.space-between.align-start
 
           .home-main-inner__view-main_content_title.w-100.flex.space-between.align-center
-            h1 Clean Skin Laser Studio
+            h1 D &#149; Epil Studio
 
             ul.home-main-inner__view-main_social-list.flex
               li.home-main-inner__view-main_social-list__item.po-r
                 a.po-a(
                   href="https://instagram.com/"
                   target="_blank"
-                  style="background-image: url('/img/instagram.svg');"
+                  style="background-image: url('clean-skin-laser-frontend/img/instagram.svg');"
                   )
               li.home-main-inner__view-main_social-list__item
                 a.po-a(
                   href="/"
                   target="_blank"
-                  style="background-image: url('/img/telegram.svg');"
+                  style="background-image: url('clean-skin-laser-frontend/img/telegram.svg');"
                   )
 
           .home-main-inner__view-main_content-text
-            h2 Сведение/осветление татуировок
-            h2 Удаление татуажа
-            h2 Эпиляция
-            h2 Карбоновый пиллинг
+            //- h2 Сведение/осветление татуировок
+            //- h2 Удаление татуажа
+            //- h2 Эпиляция
+            //- h2 Карбоновый пиллинг
+            h2 Депиляция
+            h2 Шугаринг
 
           .home-main-inner__view-main_content-buttons.flex.f-wrap
             AppointmentButton.home-main-inner__view-main_content-buttons__appointment-button
@@ -101,6 +103,7 @@ export default {
     &__view
       &-main
         margin-bottom 200px
+        gap 3em
         &_banner
           height 360px
         &_social-list

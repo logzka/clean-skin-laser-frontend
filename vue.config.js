@@ -5,7 +5,7 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = defineConfig({
-  publicPath: '/clean-skin-laser-frontend/',
+  publicPath: '/',
 
   transpileDependencies: true,
 
@@ -18,6 +18,7 @@ module.exports = defineConfig({
   devServer: {
     compress: true,
     port: 8002,
+    open: true,
   },
 
   chainWebpack: (config) => {

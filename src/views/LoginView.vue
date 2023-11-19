@@ -1,7 +1,7 @@
 <template lang="pug">
 .login-view.flex.align-center.space-center(v-loading="loadingLogin")
   .login-view__inner
-    h3 Вход в систему {{ loginSystem }} CS Laser Studio
+    h3 Вход в систему {{ loginSystem }} D &#149; Epil Studio
 
     .login-view__inner-form
       el-form(

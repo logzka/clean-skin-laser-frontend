@@ -35,10 +35,12 @@ const menuItems = [{
 }, {
   label: 'Студия',
   link: '/studio',
-}, {
-  label: 'Оборудование',
-  link: '/lasers',
-}, {
+},
+// {
+//   label: 'Оборудование',
+//   link: '/lasers',
+// },
+{
   label: 'Прайс',
   link: '/price',
 }, {
