@@ -16,13 +16,13 @@ el-main.home-main
                 a.po-a(
                   href="https://instagram.com/"
                   target="_blank"
-                  style="background-image: url('clean-skin-laser-frontend/img/instagram.svg');"
+                  style="background-image: url('img/instagram.svg');"
                   )
               li.home-main-inner__view-main_social-list__item
                 a.po-a(
                   href="/"
                   target="_blank"
-                  style="background-image: url('clean-skin-laser-frontend/img/telegram.svg');"
+                  style="background-image: url('img/telegram.svg');"
                   )
 
           .home-main-inner__view-main_content-text

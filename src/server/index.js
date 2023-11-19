@@ -1,15 +1,15 @@
 const stocksApi = [{
   id: 1,
   name: 'stock_1',
-  image: 'clean-skin-laser-frontend/img/laser-gone-tattoo-removal.webp',
+  image: 'img/laser-gone-tattoo-removal.webp',
 }, {
   id: 2,
   name: 'stock_2',
-  image: 'clean-skin-laser-frontend/img/laser-gone-tattoo-removal.webp',
+  image: 'img/laser-gone-tattoo-removal.webp',
 }, {
   id: 3,
   name: 'stock_3',
-  image: 'clean-skin-laser-frontend/img/laser-gone-tattoo-removal.webp',
+  image: 'img/laser-gone-tattoo-removal.webp',
 }];
 
 const servicesApi = [{

@@ -1,7 +1,7 @@
 <template lang="pug">
 .home-main-view-banner.h-100
     //- video.h-100(
-        src="clean-skin-laser-frontend/img/banner-video.webm"
+        src="img/banner-video.webm"
         loop
         autoplay
         muted

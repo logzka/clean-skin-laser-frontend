@@ -13,13 +13,13 @@ el-footer.home-footer(
       ul.home-footer-inner__social-info_list.flex
         li.home-footer-inner__social-info_list-item
           a(href="https://instagram.com/" target="_blank")
-            img(src="clean-skin-laser-frontend/img/instagram-white.svg" alt="instagram ссылка")
+            img(src="img/instagram-white.svg" alt="instagram ссылка")
         li.home-footer-inner__social-info_list-item
           a(href="/" target="_blank")
-            img(src="clean-skin-laser-frontend/img/telegram-white.svg" alt="telegram ссылка")
+            img(src="img/telegram-white.svg" alt="telegram ссылка")
         li.home-footer-inner__social-info_list-item
           a(href="https://vk.com/" target="_blank")
-            img(src="clean-skin-laser-frontend/img/vk-white.svg" alt="vk ссылка")
+            img(src="img/vk-white.svg" alt="vk ссылка")
 
       .home-footer-inner__social-info_phone
         a(href="tel:+79604867349") +7 (960) 486 73 49
