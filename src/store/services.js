@@ -1,6 +1,4 @@
-import server from '../server';
-
-const { servicesApi } = server;
+import services from '../api/services';
 
 export default {
   state: {
@@ -27,8 +25,6 @@ export default {
 
       try {
         // const services = await this.$axios.get('/getServices', { params });
-
-        const services = servicesApi;
 
         commit('SET_SERVICES', services);
       } catch (error) {

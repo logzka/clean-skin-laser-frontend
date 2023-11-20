@@ -1,6 +1,4 @@
-import server from '../server';
-
-const { mastersApi } = server;
+import masters from '../api/masters';
 
 export default {
   state: {
@@ -33,8 +31,6 @@ export default {
 
       try {
         // const masters = await this.$axios.get('/getMasters', { params });
-
-        const masters = mastersApi;
 
         commit('SET_MASTERS', masters);
       } catch (error) {

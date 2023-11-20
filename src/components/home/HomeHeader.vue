@@ -8,7 +8,7 @@ el-header.home-header
 
     router-link.home-header__logo(
         to="/"
-    ) D &#149; Epil Studio
+    ) D &#149; Aesthetic Studio
 
     home-header-menu(
       ref="homeHeaderMenu"

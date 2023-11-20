@@ -6,6 +6,7 @@ import masters from './masters';
 import schedule from './schedule';
 import studio from './studio';
 import lasers from './lasers';
+import price from './price';
 
 export default createStore({
   namespaced: true,
@@ -16,5 +17,6 @@ export default createStore({
     schedule,
     studio,
     lasers,
+    price,
   },
 });

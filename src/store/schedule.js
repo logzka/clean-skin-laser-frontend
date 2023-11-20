@@ -1,6 +1,4 @@
-import server from '../server';
-
-const { scheduleApi } = server;
+import schedule from '../api/schedule';
 
 export default {
   state: {
@@ -34,8 +32,6 @@ export default {
 
       try {
         // const schedule = await this.$axios.get('/getSchedule', { params });
-
-        const schedule = scheduleApi;
 
         commit('SET_SCHEDULE', schedule);
       } catch (error) {

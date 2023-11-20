@@ -1,6 +1,4 @@
-import server from '../server';
-
-const { stocksApi } = server;
+import stocks from '../api/stocks';
 
 // const PATH = '/stocks';
 
@@ -17,8 +15,6 @@ export default {
     async getStocks({ commit }) {
       try {
         // const stocks = await this.$axios.get(PATH);
-
-        const stocks = stocksApi;
 
         commit('SET_STOCKS', stocks);
       } catch (error) {
@@ -37,7 +33,7 @@ export default {
 
         const currentStocks = [
           { ...params },
-          ...getters.stocks || stocksApi,
+          ...getters.stocks || stocks,
         ];
 
         commit('SET_STOCKS', currentStocks);
@@ -72,12 +68,10 @@ export default {
       try {
         // await this.$axios.delete(`${PATH}/delete/${stockId}`);
 
-        const currentStocks = getters.stocks || stocksApi;
-
-        const stocks = currentStocks
+        const currentStocks = (getters.stocks || [])
           .filter((stock) => stock.id !== stockId) || [];
 
-        commit('SET_STOCKS', stocks);
+        commit('SET_STOCKS', currentStocks);
       } catch (error) {
         throw Error(error);
       }

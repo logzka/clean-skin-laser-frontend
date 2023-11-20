@@ -1,6 +1,4 @@
-import server from '../server';
-
-const { lasersApi } = server;
+import lasers from '../api/lasers';
 
 export default {
   state: {
@@ -15,8 +13,6 @@ export default {
     async getLasers({ commit }) {
       try {
         // const lasers = await this.$axios.get('/getLasers');
-
-        const lasers = lasersApi;
 
         commit('SET_LASERS', lasers);
       } catch (error) {

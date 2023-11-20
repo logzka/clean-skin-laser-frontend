@@ -1,6 +1,4 @@
-import server from '../server';
-
-const { studioApi } = server;
+import studio from '../api/studio';
 
 export default {
   state: {
@@ -15,8 +13,6 @@ export default {
     async getStudio({ commit }) {
       try {
         // const studio = await this.$axios.get('/getStudio');
-
-        const studio = studioApi;
 
         commit('SET_STUDIO', studio);
       } catch (error) {

@@ -9,7 +9,7 @@ el-main.home-main
         .home-main-inner__view-main_content.flex.f-col.space-between.align-start
 
           .home-main-inner__view-main_content_title.w-100.flex.space-between.align-center
-            h1 D &#149; Epil Studio
+            h1 D &#149; Aesthetic Studio
 
             ul.home-main-inner__view-main_social-list.flex
               li.home-main-inner__view-main_social-list__item.po-r

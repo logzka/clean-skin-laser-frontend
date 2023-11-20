@@ -3,7 +3,7 @@ el-footer.home-footer(
   )
   .home-footer-inner.w-100.flex.space-between.align-center.f-wrap
     .home-footer-inner__copy
-      h2 D &#149; Epil Studio
+      h2 D &#149; Aesthetic Studio
       | &copy;&nbsp;Все права защищены,&nbsp;2022
 
     .home-footer-inner__menu

@@ -1,7 +1,7 @@
 <template lang="pug">
 .login-view.flex.align-center.space-center(v-loading="loadingLogin")
   .login-view__inner
-    h3 Вход в систему {{ loginSystem }} D &#149; Epil Studio
+    h3 Вход в систему {{ loginSystem }} D &#149; Aesthetic Studio
 
     .login-view__inner-form
       el-form(
@@ -19,6 +19,7 @@
           el-input(
             v-model="loginRuleForm.login"
             size="large"
+            autofocus
             :aria-label="'login'"
             )
 
@@ -29,8 +30,17 @@
           el-input(
             v-model="loginRuleForm.password"
             size="large"
+            :type="!showPassword ? 'password' : 'text'"
             :aria-label="'password'"
             )
+            template(#append)
+              el-button(
+                text
+                @click="setShowPassword"
+                )
+                el-icon
+                  Hide(v-if="!showPassword")
+                  View(v-else)
 
         el-form-item.login-view__inner-form_entry-button
           el-button(
@@ -74,6 +84,7 @@ export default {
     loginRules,
 
     loadingLogin: false,
+    showPassword: false,
   }),
 
   methods: {
@@ -97,6 +108,15 @@ export default {
     async submitForm() {
       await this.$refs.loginForm.validate((valid) => {
         if (valid) {
+          if (this.loginRuleForm.login !== 'admin_nas_dav'
+          || this.loginRuleForm.login !== 'admin_nas_dav') {
+            ElNotification({
+              message: 'Указан неверный логин/пароль.',
+              type: 'error',
+            });
+            return;
+          }
+
           this.login();
 
           ElNotification({
@@ -119,6 +139,10 @@ export default {
      */
     resetForm() {
       if (this.$refs?.loginForm) this.$refs.loginForm.resetFields();
+    },
+
+    setShowPassword() {
+      this.showPassword = !this.showPassword;
     },
   },
 };

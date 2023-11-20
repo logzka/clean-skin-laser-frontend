@@ -17,6 +17,7 @@
     "@vue/cli-service": "~5.0.0",
     "core-js": "^3.24.1",
     "element-plus": "^2.2.13",
+    "firebase": "^10.6.0",
     "image-minimizer-webpack-plugin": "^3.3.0",
     "imagemin": "^8.0.1",
     "imagemin-optipng": "^8.0.0",
@@ -43,12 +44,12 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-vue": "^8.0.3",
     "eslint-plugin-vuejs-accessibility": "^1.1.0",
+    "execa": "latest",
     "jest": "^27.0.5",
     "pug": "^3.0.2",
     "pug-html-loader": "^1.1.5",
     "pug-plain-loader": "^1.1.0",
     "stylus": "^0.58.1",
-    "stylus-loader": "^7.0.0",
-    "execa": "latest"
+    "stylus-loader": "^7.0.0"
   }
 }
