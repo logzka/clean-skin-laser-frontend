@@ -3,6 +3,8 @@
   el-form(
     ref="form"
 
+    netlify
+
     :label-position="labelPosition"
 
     :model="ruleForm"
@@ -19,6 +21,7 @@
       el-input(
         v-model="ruleForm.name"
         size="large"
+        name="name"
         :aria-label="'name'"
         )
 
@@ -29,6 +32,7 @@
       el-input(
         v-model="ruleForm.phone"
         size="large"
+        name="phone"
         :aria-label="'phone number'"
         )
 
@@ -124,6 +128,7 @@
       el-button(
         size="large"
         type="primary"
+        native-type="submit"
         plain
 
         aria-label="send"
