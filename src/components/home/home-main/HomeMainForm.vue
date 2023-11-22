@@ -22,6 +22,7 @@
         v-model="ruleForm.name"
         size="large"
         name="name"
+        type="text"
         :aria-label="'name'"
         )
 
@@ -33,6 +34,7 @@
         v-model="ruleForm.phone"
         size="large"
         name="phone"
+        type="text"
         :aria-label="'phone number'"
         )
 
@@ -42,6 +44,7 @@
       )
       el-select(
         v-model="ruleForm.master"
+        name="master"
         placeholder="Выберите специалиста"
         size="large"
         clearable
@@ -66,6 +69,7 @@
           )
           el-date-picker.w-100(
             v-model="ruleForm.date"
+            name="date"
             type="date"
             placeholder="Выберите дату"
             size="large"
@@ -77,6 +81,7 @@
           )
           el-time-select(
             v-model="ruleForm.time"
+            name="time"
             start="08:00"
             step="1:00"
             end="20:00"
@@ -94,6 +99,7 @@
       )
       el-switch(
         v-model="ruleForm.callback"
+        name="callback"
         size="large"
         )
 
@@ -111,6 +117,7 @@
           :name="service.name"
           :disabled="(masterServices.length > 0 && !masterServices.includes(service.id))"
 
+          name="services"
           size="large"
           )
 
@@ -120,6 +127,7 @@
       )
       el-input(
         v-model="ruleForm.desc"
+        name="description"
         type="textarea"
         :aria-label="'comment'"
         )
