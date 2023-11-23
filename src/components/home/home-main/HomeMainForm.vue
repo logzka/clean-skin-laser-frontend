@@ -16,6 +16,7 @@
       )
       el-input(
         v-model="ruleForm.name"
+        :value="ruleForm.name"
         size="large"
         name="name"
         type="text"
@@ -28,6 +29,7 @@
       )
       el-input(
         v-model="ruleForm.phone"
+        :value="ruleForm.phone"
         size="large"
         name="phone"
         type="text"
@@ -40,6 +42,7 @@
       )
       el-select(
         v-model="ruleForm.master"
+        :value="ruleForm.master"
         name="master"
         placeholder="Выберите специалиста"
         size="large"
@@ -65,6 +68,7 @@
           )
           el-date-picker.w-100(
             v-model="ruleForm.date"
+            :value="ruleForm.date"
             name="date"
             type="date"
             placeholder="Выберите дату"
@@ -77,6 +81,7 @@
           )
           el-time-select(
             v-model="ruleForm.time"
+            :value="ruleForm.time"
             name="time"
             start="08:00"
             step="1:00"
@@ -91,11 +96,12 @@
 
     el-form-item(
       label="Перезвонить в течение часа"
-      prop="callback"
+      prop="isCallback"
       )
       el-switch(
-        v-model="ruleForm.callback"
-        name="callback"
+        v-model="ruleForm.isCallback"
+        :value="ruleForm.isCallback"
+        name="isCallback"
         size="large"
         )
 
@@ -105,15 +111,14 @@
       )
       el-checkbox-group(
         v-model="ruleForm.services"
+        :value="ruleForm.services"
+        name="services"
         )
         el-checkbox(
           v-for="service in services"
-
           :label="service.name"
           :name="service.name"
           :disabled="(masterServices.length > 0 && !masterServices.includes(service.id))"
-
-          name="services"
           size="large"
           )
 
@@ -123,9 +128,10 @@
       )
       el-input(
         v-model="ruleForm.desc"
+        :value="ruleForm.desc"
         name="description"
         type="textarea"
-        :aria-label="'comment'"
+        aria-label="comment"
         )
 
     el-form-item(align="end")
@@ -192,7 +198,7 @@ export default {
       master: null,
       date: null,
       time: null,
-      callback: false,
+      isCallback: false,
       services: [],
       desc: '',
     },
