@@ -2,17 +2,13 @@
 .home-main-form
   el-form(
     ref="form"
-
+    name="contact"
     netlify
-
+    class="demo-ruleForm"
+    status-icon
     :label-position="labelPosition"
-
     :model="ruleForm"
     :rules="rules"
-
-    class="demo-ruleForm"
-
-    status-icon
     )
     el-form-item(
       label="Имя"
