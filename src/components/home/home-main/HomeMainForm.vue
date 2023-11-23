@@ -3,7 +3,9 @@
   el-form(
     ref="form"
     name="contact"
-    netlify
+    method="post"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
     class="demo-ruleForm"
     status-icon
     :label-position="labelPosition"
