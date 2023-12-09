@@ -26,12 +26,12 @@ el-main.home-main
                   )
 
           .home-main-inner__view-main_content-text
-            //- h2 Сведение/осветление татуировок
-            //- h2 Удаление татуажа
-            //- h2 Эпиляция
-            //- h2 Карбоновый пиллинг
+            h2 Сведение/осветление татуировок
+            h2 Удаление татуажа
+            h2 Эпиляция
             h2 Депиляция
             h2 Шугаринг
+            h2 Эстетическиая косметология
 
           .home-main-inner__view-main_content-buttons.flex.f-wrap
             AppointmentButton.home-main-inner__view-main_content-buttons__appointment-button

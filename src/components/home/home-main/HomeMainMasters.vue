@@ -48,22 +48,23 @@
                           :dataForDialog="{ master: master.master.id }"
                           buttonType="primary"
                           )
-                .box-card__content.flex
-                    .box-card__content-photo(
-                      :style="{ backgroundImage: `url('${master.master.photo}')` }"
-                      )
-                    .box-card__content-text
-                        h3 Процедуры
-                        | {{ divideServices(master.master.services) }}
-                        h3 Квалификация
-                        | {{ master.master.skills }}
-                        h3 Опыт работы
-                        | {{ master.master.experience }}
-                        h3 Ближайшие свободные места
-                        div(
-                            v-for="date in master.master.closest_free_dates"
-                            :key="date"
-                            ) {{ $formatDate(date, 'DD.MM') }} на {{ $formatDate(date, 'HH:mm') }}
+                .box-card__content.flex.space-between
+                    .flex
+                      .box-card__content-photo(
+                        :style="{ backgroundImage: `url('${master.master.photo}')` }"
+                        )
+                      .box-card__content-text
+                          h3 Процедуры
+                          | {{ divideServices(master.master.services) }}
+                          h3 Квалификация
+                          | {{ master.master.skills }}
+                          h3 Опыт работы
+                          | {{ master.master.experience }}
+                          h3 Ближайшие свободные места
+                          div(
+                              v-for="date in master.master.closest_free_dates"
+                              :key="date"
+                              ) {{ $formatDate(date, 'DD.MM') }} на {{ $formatDate(date, 'HH:mm') }}
                     .box-card__content-connect
                         a.el-button(
                             href="https://instagram.com/"

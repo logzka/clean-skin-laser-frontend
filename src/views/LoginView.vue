@@ -108,8 +108,8 @@ export default {
     async submitForm() {
       await this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          if (this.loginRuleForm.login !== 'admin_nas_dav'
-          || this.loginRuleForm.login !== 'admin_nas_dav') {
+          if (this.loginRuleForm.login !== 'admin'
+          || this.loginRuleForm.login !== 'admin') {
             ElNotification({
               message: 'Указан неверный логин/пароль.',
               type: 'error',
