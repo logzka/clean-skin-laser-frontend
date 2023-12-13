@@ -9,6 +9,7 @@ import HomeMainPrice from '../components/home/home-main/HomeMainPrice.vue';
 import HomeMainContacts from '../components/home/home-main/HomeMainContacts.vue';
 
 // ADMIN
+import AdminBanner from '../components/admin/AdminBanner.vue';
 import AdminStocks from '../components/admin/AdminStocks.vue';
 
 import Home from '../views/Home.vue';
@@ -52,9 +53,14 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
+    redirect: '/admin/banner',
     component: Admin,
     children: [
       {
+        path: '/admin/banner',
+        name: 'AdminBanner',
+        component: AdminBanner,
+      }, {
         path: '/admin/stocks',
         name: 'AdminStocks',
         component: AdminStocks,

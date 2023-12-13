@@ -8,6 +8,9 @@ import studio from './studio';
 import lasers from './lasers';
 import price from './price';
 
+/** Admin */
+import adminStocks from './admin/stocks';
+
 export default createStore({
   namespaced: true,
   modules: {
@@ -18,5 +21,7 @@ export default createStore({
     studio,
     lasers,
     price,
+
+    adminStocks,
   },
 });

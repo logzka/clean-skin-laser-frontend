@@ -7,6 +7,7 @@
             )
             el-menu-item(
                 index="/admin/banner"
+                @click="$router.push({ name: 'AdminBanner' })"
                 )
                 el-icon
                     Picture
