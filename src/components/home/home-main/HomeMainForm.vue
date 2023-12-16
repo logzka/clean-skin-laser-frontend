@@ -207,26 +207,14 @@ export default {
     },
 
     labelPosition: 'left',
-
     rules,
-
     loadingDropdownMasters: false,
-
-    items: ['item 1', 'item 2', 'item 3'],
   }),
-
-  beforeMount() {
-    console.log(this.$el);
-  },
 
   mounted() {
     window.addEventListener('resize', (e) => {
       this.labelPosition = e.target.innerWidth < 800 ? 'top' : 'left';
     });
-  },
-
-  updated() {
-    console.log('component has been updated!');
   },
 
   methods: {

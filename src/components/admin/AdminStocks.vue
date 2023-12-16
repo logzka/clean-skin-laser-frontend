@@ -6,7 +6,7 @@
     h3(v-if="!stockForm.id") Новая акция
     h3(v-else) Редактирование акции
 
-    .w-100.flex.space-between
+    .w-100.flex.space-between.gap-2
       .admin-stocks__inner-form.w-100
         admin-stocks-form
 

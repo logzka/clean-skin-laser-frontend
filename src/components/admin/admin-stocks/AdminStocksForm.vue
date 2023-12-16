@@ -20,7 +20,7 @@ el-form.w-100(
     label="Плакат"
     prop="image"
     )
-    el-upload(
+    el-upload.w-100(
       :auto-upload="false"
       :file-list="getFileList(stockForm)"
       drag

@@ -4,10 +4,13 @@
     indicator-position="outside"
     )
     el-carousel-item.flex(
-      v-for="stock in stocks"
-      :style="{ backgroundImage: `url('${stock.image}'` }"
+      v-for="stock in preStocks"
+      :style="{ backgroundImage: `url('img/${stock.image}')` }"
       )
-      h3 {{ stock.name }}
+      .flex-center.text-center.w-100
+        h2(
+          style="color: #fff;background: var(--el-color-primary-light-3);max-width: 45%;"
+          ) {{ stock.name }}
 </template>
 
 <script>
@@ -15,6 +18,10 @@
 export default {
   computed: {
     stocks() {
+      return this.$store.getters.stocks;
+    },
+
+    preStocks() {
       return this.$store.getters.stocks || [];
     },
   },
@@ -23,21 +30,17 @@ export default {
   }),
 
   mounted() {
-    this.$store.dispatch('getStocks');
+    if (this.stocks) return;
+
+    this.$store.dispatch('setLoading', true);
+
+    setTimeout(() => {
+      this.$store.dispatch('getStocks');
+      this.$store.dispatch('setLoading', false);
+    }, 1000);
   },
 
   methods: {
-    /**
-     * Get stock bunner image
-     *
-     * @param {Object} stock Current stock data
-     * @return {Object} Stock style background image
-     */
-    getStockBanner(stock) {
-      return {
-        backgroundImage: `url('@${stock.image}')`,
-      };
-    },
   },
 };
 </script>
@@ -47,5 +50,5 @@ export default {
   border-radius: 2px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top
+  background-position: center
 </style>

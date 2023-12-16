@@ -14,12 +14,18 @@
             :style="getTileStyle(item)"
             )
     .home-main-view-banner__inner.h-100(
-      style="background-image: url('https://pro-vosk.ru/wp-content/uploads/2020/06/Epilyatsiya-ili-depilyatsiya.jpg');"
+      :style="{ backgroundImage: `url('img/${activeBanner?.image || ''}')` }"
       )
 </template>
 
 <script>
 export default {
+  computed: {
+    activeBanner() {
+      return this.$store.getters.activeBanner;
+    },
+  },
+
   data: () => ({
   }),
 

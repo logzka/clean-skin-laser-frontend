@@ -1,5 +1,5 @@
 <template lang="pug">
-el-main.home-main
+el-main.home-main(v-loading="loading")
   .home-main-inner
 
     .home-main-inner__view(v-if="$route.path === '/'")
@@ -26,12 +26,9 @@ el-main.home-main
                   )
 
           .home-main-inner__view-main_content-text
-            h2 Сведение/осветление татуировок
-            h2 Удаление татуажа
-            h2 Эпиляция
-            h2 Депиляция
-            h2 Шугаринг
-            h2 Эстетическиая косметология
+            h2(
+              v-for="service in activeBanner?.services || []"
+              ) {{ servicesIterator[service]?.name || '' }}
 
           .home-main-inner__view-main_content-buttons.flex.f-wrap
             AppointmentButton.home-main-inner__view-main_content-buttons__appointment-button
@@ -80,7 +77,30 @@ export default {
     HomeMainDialog,
   },
 
+  computed: {
+    loading() {
+      return this.$store.getters.loading || false;
+    },
+
+    activeBanner() {
+      return this.$store.getters.activeBanner;
+    },
+
+    servicesIterator() {
+      return this.$store.getters.servicesIterator || {};
+    },
+  },
+
   mounted() {
+    if (!this.activeBanner) {
+      this.$store.dispatch('setLoading', true);
+
+      setTimeout(() => {
+        this.$store.dispatch('getActiveBanner');
+        this.$store.dispatch('setLoading', false);
+      }, 1000);
+    }
+
     this.$store.dispatch('getServices', {});
 
     this.$emitter.on('openHomeMainDialog', (formData) => {

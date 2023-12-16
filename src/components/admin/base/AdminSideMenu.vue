@@ -6,6 +6,14 @@
             :collapse="isCollapse"
             )
             el-menu-item(
+                index="/"
+                @click="$router.push({ name: 'home' })"
+                )
+                el-icon
+                    Back
+                template(#title)
+                    span Вернуться на сайт
+            el-menu-item(
                 index="/admin/banner"
                 @click="$router.push({ name: 'AdminBanner' })"
                 )
@@ -23,6 +31,7 @@
                     span Акции
             el-menu-item(
                 index="/admin/masters"
+                disabled
                 )
                 el-icon
                     User
@@ -30,6 +39,7 @@
                     span Мастера
             el-menu-item(
                 index="/admin/studio"
+                disabled
                 )
                 el-icon
                     OfficeBuilding
@@ -37,6 +47,7 @@
                     span Студия
             el-menu-item(
                 index="/admin/lasers"
+                disabled
                 )
                 el-icon
                     Box
@@ -44,6 +55,7 @@
                     span Оборудование
             el-menu-item(
                 index="/admin/price"
+                disabled
                 )
                 el-icon
                     Money
@@ -51,6 +63,7 @@
                     span Прайс
             el-menu-item(
                 index="/admin/contacts"
+                disabled
                 )
                 el-icon
                     LocationInformation

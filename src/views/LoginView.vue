@@ -6,10 +6,8 @@
     .login-view__inner-form
       el-form(
         ref="loginForm"
-
         :model="loginRuleForm"
         :rules="loginRules"
-
         status-icon
         )
         el-form-item(
@@ -46,10 +44,8 @@
           el-button(
             size="large"
             plain
-
             aria-label="enter"
             name="enter"
-
             @click="submitForm()"
             ) Войти
 </template>
@@ -77,8 +73,8 @@ export default {
 
   data: () => ({
     loginRuleForm: {
-      login: '',
-      password: '',
+      login: 'admin',
+      password: 'admin',
     },
 
     loginRules,
