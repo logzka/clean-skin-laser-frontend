@@ -46,7 +46,7 @@
             plain
             aria-label="enter"
             name="enter"
-            @click="submitForm()"
+            @click="submitForm"
             ) Войти
 </template>
 
@@ -65,7 +65,7 @@ const loginRules = {
 export default {
   computed: {
     loginSystem() {
-      return `${this.$route.params?.login_as === 'admin'
+      return `${this.$route.query?.login_as === 'admin'
         ? 'администрирования'
         : 'управления'}`;
     },
@@ -120,7 +120,7 @@ export default {
             type: 'success',
           });
 
-          this.$router.push(`/${this.$route.params?.login_as}`);
+          this.$router.push({ name: this.$route.query?.login_as });
         } else {
           ElNotification({
             message: 'Заполните все обязательные поля.',
