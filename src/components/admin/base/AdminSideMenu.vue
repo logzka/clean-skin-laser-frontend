@@ -106,14 +106,4 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.el-menu-vertical-demo
-    height 100vh
-    border-right 4px solid transparent
-    border-image linear-gradient(#2CC990, #9684A3)
-    -moz-border-image -moz-linear-gradient(#2CC990, #9684A3)
-    -webkit-border-image -webkit-linear-gradient(45deg, #2CC990, #9684A3)
-    border-image-slice 1
-    padding 26px 0
-    &:not(.el-menu--collapse)
-        width 240px
 </style>

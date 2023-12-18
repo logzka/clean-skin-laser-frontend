@@ -12,6 +12,9 @@ import HomeMainContacts from '../components/home/home-main/HomeMainContacts.vue'
 import AdminBanner from '../components/admin/AdminBanner.vue';
 import AdminStocks from '../components/admin/AdminStocks.vue';
 
+// MANAGER
+import ManagerCharts from '../components/manager/ManagerCharts.vue';
+
 import Home from '../views/Home.vue';
 import Admin from '../views/Admin.vue';
 import Manager from '../views/Manager.vue';
@@ -71,6 +74,12 @@ const routes = [
     path: '/manager',
     name: 'manager',
     component: Manager,
+    redirect: '/manager/charts',
+    children: [{
+      path: '/manager/charts',
+      name: 'ManagerCharts',
+      component: ManagerCharts,
+    }],
   },
   {
     path: '/login',

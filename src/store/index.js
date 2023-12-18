@@ -14,6 +14,9 @@ import price from './price';
 import bannerStocks from './admin/banner';
 import adminStocks from './admin/stocks';
 
+/** Manager */
+import managerCharts from './manager/charts';
+
 export default createStore({
   namespaced: true,
   modules: {
@@ -29,5 +32,7 @@ export default createStore({
 
     bannerStocks,
     adminStocks,
+
+    managerCharts,
   },
 });
