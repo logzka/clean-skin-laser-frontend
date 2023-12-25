@@ -25,11 +25,11 @@
               PieChart
 
     .flex.gap-2
-      .manager-charts__inner-chart.w-100
+      .manager-charts__inner-chart
         Bar(
           v-if="chartType === 'histogram'"
           id="my-chart-id"
-          style="position: relative; height: calc(100vh - 200px);"
+          :style="chartStyle"
           :options="chartOptions"
           :data="chartData"
           )
@@ -37,6 +37,7 @@
         Pie(
           v-if="chartType === 'pie'"
           id="my-chart-id"
+          :style="chartStyle"
           :options="chartOptions"
           :data="chartData"
           )
@@ -85,6 +86,18 @@ export default {
               .map(({ count }) => count || 0),
           },
         ],
+      };
+    },
+
+    isCollapse() {
+      return this.$store.getters.isCollapse || false;
+    },
+
+    chartStyle() {
+      return {
+        position: 'relative',
+        height: 'calc(100vh - 200px)',
+        width: this.isCollapse ? 'calc(100vw - 257px)' : 'calc(100vw - 433px)',
       };
     },
   },

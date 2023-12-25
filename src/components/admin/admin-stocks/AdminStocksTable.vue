@@ -5,12 +5,32 @@ el-table(
   height="calc(100vh - 148px)"
   )
   el-table-column(
+    prop="active"
+    label="Текущая"
+    width="140"
+    header-align="center"
+    )
+    template(v-slot="row")
+      .admin-stocks__inner-table_stock-active.text-center
+        el-button(
+          type="success"
+          text
+          @click="$emit('updateActiveStocks', row.row)"
+          )
+          div.flex.align-center(v-if="row.row.active")
+            el-icon(color="rgb(44, 201, 144)")
+              SuccessFilled
+            span Убрать
+
+          span(v-else) Разместить
+
+  el-table-column(
     prop="name"
-    label="Доступные акции"
+    label="Название"
     width="320"
     :formatter="(row, column, cellValue) => cellValue.length ? cellValue : '--'"
     )
-  el-table-column(width="160")
+  el-table-column(width="160" label="Фон")
     template(v-slot="row")
       img.admin-stocks__inner-table_stock-image(
         :src="`/img/${row.row.image}`"

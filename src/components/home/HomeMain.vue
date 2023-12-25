@@ -28,7 +28,7 @@ el-main.home-main(v-loading="loading")
           .home-main-inner__view-main_content-text
             h2(
               v-for="service in activeBanner?.services || []"
-              ) {{ servicesIterator[service]?.name || '' }}
+              ) {{ servicesMap[service]?.name || '' }}
 
           .home-main-inner__view-main_content-buttons.flex.f-wrap
             AppointmentButton.home-main-inner__view-main_content-buttons__appointment-button
@@ -86,8 +86,8 @@ export default {
       return this.$store.getters.activeBanner;
     },
 
-    servicesIterator() {
-      return this.$store.getters.servicesIterator || {};
+    servicesMap() {
+      return this.$store.getters.servicesMap || {};
     },
   },
 

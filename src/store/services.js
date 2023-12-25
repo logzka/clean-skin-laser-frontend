@@ -3,12 +3,12 @@ import services from '../api/services';
 export default {
   state: {
     services: null,
-    servicesIterator: {},
+    servicesMap: {},
   },
 
   getters: {
     services: (state) => state.services,
-    servicesIterator: (state) => state.servicesIterator,
+    servicesMap: (state) => state.servicesMap,
   },
 
   actions: {
@@ -29,7 +29,7 @@ export default {
         // const services = await this.$axios.get('/getServices', { params });
 
         commit('SET_SERVICES', services);
-        await commit('SET_SERVICES_ITERATOR', services);
+        await commit('SET_SERVICES_MAP', services);
       } catch (error) {
         throw Error(error);
       }
@@ -40,8 +40,8 @@ export default {
       state.services = data || null;
     },
 
-    SET_SERVICES_ITERATOR(state, data) {
-      state.servicesIterator = (data || [])
+    SET_SERVICES_MAP(state, data) {
+      state.servicesMap = (data || [])
         .reduce((acc, el) => ({
           ...acc,
           [el.id]: el,

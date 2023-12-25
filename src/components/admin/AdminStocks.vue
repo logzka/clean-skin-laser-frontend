@@ -11,10 +11,15 @@
         admin-stocks-form
 
       .admin-stocks__inner-table
-        admin-stocks-table
+        admin-stocks-table(
+          @update-active-stocks="updateActiveStocks"
+          )
 </template>
 
 <script>
+import {
+  ElNotification,
+} from 'element-plus';
 /** Components */
 import AdminStocksForm from './admin-stocks/AdminStocksForm.vue';
 import AdminStocksTable from './admin-stocks/AdminStocksTable.vue';
@@ -32,6 +37,50 @@ export default {
 
     stockForm() {
       return this.$store.getters.stockForm;
+    },
+
+    stocks() {
+      return this.$store.getters.stocks || [];
+    },
+
+    activeStocks() {
+      return this.$store.getters.activeStocks || [];
+    },
+  },
+
+  methods: {
+    /**
+     * Update Active Stocks
+     * @param {Object} currentStock Curren stock
+     */
+    async updateActiveStocks(currentStock) {
+      /** Set Stocks */
+      await this.$store.dispatch(
+        'setStocks',
+        this.stocks
+          .map((stock) => ({
+            ...stock,
+            active: currentStock.id === stock.id
+              ? !currentStock.active
+              : stock.active,
+          })),
+      );
+
+      await this.$store.dispatch(
+        'setActiveStocks',
+        currentStock.active
+          ? this.activeStocks
+            .filter((stock) => currentStock.id !== stock.id)
+          : [
+            ...this.activeStocks,
+            currentStock,
+          ],
+      );
+
+      ElNotification({
+        message: 'Акции успешно размещены на главном экране.',
+        type: 'success',
+      });
     },
   },
 };

@@ -22,6 +22,13 @@ export default {
       }
     },
 
+    /**
+     * Set stocks
+     */
+    setStocks({ commit }, data) {
+      commit('SET_STOCKS', data);
+    },
+
     async createStock({ getters, commit }, stockData) {
       if (!stockData) throw Error('Не получены данные по акции.');
 

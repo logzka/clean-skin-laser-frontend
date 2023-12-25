@@ -1,3 +1,5 @@
+import stocks from '../../api/stocks';
+
 export default {
   state: {
     stockForm: {
@@ -6,11 +8,13 @@ export default {
       image: null,
     },
     loadingAdminStocks: false,
+    activeStocks: stocks,
   },
 
   getters: {
     stockForm: (state) => state.stockForm,
     loadingAdminStocks: (state) => state.loadingAdminStocks,
+    activeStocks: (state) => state.activeStocks,
   },
 
   actions: {
@@ -36,6 +40,13 @@ export default {
     clearStockForm({ commit }) {
       commit('CLEAR_STOCK_FORM');
     },
+
+    /**
+     * Set Active Stocks
+     */
+    setActiveStocks({ commit }, data) {
+      commit('SET_ACTIVE_STOCKS', data);
+    },
   },
 
   mutations: {
@@ -56,6 +67,10 @@ export default {
         name: '',
         image: null,
       };
+    },
+
+    SET_ACTIVE_STOCKS(state, data) {
+      state.activeStocks = data || [];
     },
   },
 };

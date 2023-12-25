@@ -26,7 +26,7 @@
             el-menu-item(
                 disabled
                 index="/manager/spreadsheet"
-                @click="$router.push({ name: 'ManagerSpreadsheet' })"
+                @click="$router.push({ name: '' })"
                 )
                 el-icon
                   Memo
@@ -36,12 +36,22 @@
             el-menu-item(
                 disabled
                 index="/manager/accounts"
-                @click="$router.push({ name: 'ManagerAccounts' })"
+                @click="$router.push({ name: '' })"
                 )
                 el-icon
                   Avatar
                 template(#title)
                   span Клиенты
+
+            el-menu-item(
+                disabled
+                index="/manager/purchase"
+                @click="$router.push({ name: '' })"
+                )
+                el-icon
+                  GoodsFilled
+                template(#title)
+                  span Закупка
 
             el-menu-item(
                 index="7"
@@ -58,10 +68,17 @@
 <script>
 export default {
   computed: {
+    isCollapse: {
+      get() {
+        return this.$store.getters.isCollapse || false;
+      },
+      set(flag) {
+        this.$store.dispatch('setIsCollapse', flag);
+      },
+    },
   },
 
   data: () => ({
-    isCollapse: false,
   }),
 
   created() {

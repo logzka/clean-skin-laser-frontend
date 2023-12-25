@@ -35,6 +35,15 @@ el-form.w-100(
       template(#tip)
         .el-upload__tip png/webp форматы
 
+  el-form-item(
+    label=""
+    prop="active"
+    )
+    el-checkbox(
+      v-model="stockForm.active"
+      label="Разместить"
+      )
+
   el-form-item.admin-stocks__inner-form_add-button
     el-button(
       size="large"

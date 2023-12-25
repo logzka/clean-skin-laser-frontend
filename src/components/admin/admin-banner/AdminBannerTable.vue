@@ -71,8 +71,8 @@ export default {
       return this.$store.getters.banners || [];
     },
 
-    servicesIterator() {
-      return this.$store.getters.servicesIterator;
+    servicesMap() {
+      return this.$store.getters.servicesMap;
     },
   },
 
@@ -152,7 +152,7 @@ export default {
 
     getCellServices(cellValue) {
       return cellValue.length ? cellValue
-        .map((value) => this.servicesIterator[value].name).join(', ') : '--';
+        .map((value) => this.servicesMap[value].name).join(', ') : '--';
     },
   },
 };

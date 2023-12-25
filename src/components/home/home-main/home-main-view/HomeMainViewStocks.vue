@@ -18,11 +18,11 @@
 export default {
   computed: {
     stocks() {
-      return this.$store.getters.stocks;
+      return this.$store.getters.activeStocks;
     },
 
     preStocks() {
-      return this.$store.getters.stocks || [];
+      return this.stocks || [];
     },
   },
 
