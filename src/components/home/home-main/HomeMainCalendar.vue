@@ -1,95 +1,94 @@
 <template lang="pug">
 .home-main-calendar(v-loading="loadingCalendarSchedule")
-    .home-main-calendar__inner.flex.f-col
-        .home-main-calendar__inner_title.b Выберите дату, чтобы записаться
+  .home-main-calendar__inner.flex.f-col
+    .home-main-calendar__inner_title.b Выберите дату, чтобы записаться
 
-        el-calendar(
-            ref="calendar"
-            v-model="currentDate"
+      el-calendar(
+        ref="calendar"
+        v-model="currentDate"
+        )
+        template(#header="{ date }")
+          span {{ date }}
+          el-button-group
+              el-button(
+                  size="small"
+                  aria-label="today"
+                  name="today"
+                  @click="selectDate('today'),getCalendarSchedule(),popoverVisible=false"
+                  ) Сегодня
+              el-button(
+                  size="small"
+                  aria-label="next month"
+                  name="next month"
+                  @click="selectDate('next-month'),getCalendarSchedule(),popoverVisible=false"
+                  ) След. месяц
+
+        template(
+          #dateCell="{ data }"
+          )
+          .w-100.h-100(
+            :class="{'free-date': hasFree(data.day)}"
+            @click="getFreeSchedule(data.day)"
             )
-            template(#header="{ date }")
-                span {{ date }}
-                el-button-group
-                    el-button(
-                        size="small"
-                        aria-label="today"
-                        name="today"
-                        @click="selectDate('today'),getCalendarSchedule(),popoverVisible=false"
-                        ) Сегодня
-                    el-button(
-                        size="small"
-                        aria-label="next month"
-                        name="next month"
-                        @click="selectDate('next-month'),getCalendarSchedule(),popoverVisible=false"
-                        ) След. месяц
+            p.b(
+              :class="data.isSelected ? 'is-selected' : ''"
+              ) {{ $formatDate(data.day, 'DD') }}&nbsp;
+              span(
+                v-if="hasFree(data.day)"
+                ) - есть свободные места
 
-            template(
-              #dateCell="{ data }"
-              )
-              .w-100.h-100(
-                :class="{'free-date': hasFree(data.day)}"
+    el-popover(
+      :width="600"
+      :show-arrow="false"
+      popper-style="position: fixed;top: 120px;right: 0;transform: unset;"
+      virtual-triggering
+      v-model:visible="popoverVisible"
+      )
+      .home-main-calendar__inner_table(
+        v-if="currentDate"
+        v-loading="loadingDateSchedule"
+        )
+        .home-main-calendar__inner_table-title.b Свободно на&nbsp;
+            span {{ $formatDate(currentDate) }}
 
-                @click="getFreeSchedule(data.day)"
-                )
-                p.b(
-                  :class="data.isSelected ? 'is-selected' : ''"
-                  ) {{ $formatDate(data.day, 'DD') }}&nbsp;
-                  span(
-                    v-if="hasFree(data.day)"
-                    ) - есть свободные места
-
-        el-popover(
-            :width="600"
-            :show-arrow="false"
-            popper-style="position: fixed;top: 120px;right: 0;transform: unset;"
-            virtual-triggering
-            v-model:visible="popoverVisible"
+        el-table.w-100(
+          :data="filteredByCurrentDateSchedule"
+          )
+          el-table-column(
+            fixed
+            prop="date"
+            label="Время"
+            width="70"
+            :formatter="getTime"
             )
-            .home-main-calendar__inner_table(
-                v-if="currentDate"
-                v-loading="loadingDateSchedule"
+          el-table-column(
+            prop="master"
+            label="Мастер"
+            sortable
+            :formatter="getFullMasterName"
+            )
+          el-table-column(
+            prop="master"
+            label="Услуги (-га)"
+            sortable
+            :formatter="(row, column, { services }) => $formatServices(services, servicesMap)"
+            )
+          el-table-column(width="175")
+            template(v-slot="row")
+              AppointmentButton(
+                :dataForDialog="createDataForAppointmentButton(row)"
+                buttonSize="small"
                 )
-                .home-main-calendar__inner_table-title.b Свободно на&nbsp;
-                    span {{ $formatDate(currentDate) }}
 
-                el-table.w-100(
-                    :data="filteredByCurrentDateSchedule"
-                    )
-                    el-table-column(
-                        fixed
-                        prop="date"
-                        label="Время"
-                        width="70"
-                        :formatter="getTime"
-                        )
-                    el-table-column(
-                        prop="master"
-                        label="Мастер"
-                        sortable
-                        :formatter="getFullMasterName"
-                        )
-                    el-table-column(
-                        prop="master"
-                        label="Услуги (-га)"
-                        sortable
-                        :formatter="divideServices"
-                        )
-                    el-table-column(width="175")
-                        template(v-slot="row")
-                            AppointmentButton(
-                              :dataForDialog="createDataForAppointmentButton(row)"
-                              buttonSize="small"
-                              )
+      .home-main-calendar__inner_empty(v-else) На текущую дату нет доступного времени
 
-            .home-main-calendar__inner_empty(v-else) На текущую дату нет доступного времени
+      .home-main-calendar__inner_close.flex.space-end
+        el-button(
+          aria-label="close"
+          name="close"
 
-            .home-main-calendar__inner_close.flex.space-end
-                el-button(
-                  aria-label="close"
-                  name="close"
-
-                  @click="popoverVisible = false"
-                  ) Закрыть
+          @click="popoverVisible = false"
+          ) Закрыть
 </template>
 
 <script>
@@ -103,11 +102,10 @@ export default {
       return this.schedule || [];
     },
 
-    services() {
-      return this.$store.getters.services || [];
+    servicesMap() {
+      return this.$store.getters.servicesMap || {};
     },
 
-    // TODO: Remove when back filtering will add.
     filteredByCurrentDateSchedule() {
       const filteredByCurrentDate = this.preSchedule
         .filter((item) => this.$formatDate(item.date) === this.$formatDate(this.currentDate)) || [];
@@ -129,9 +127,6 @@ export default {
 
   unmounted() {
     this.$store.dispatch('resetSchedule');
-  },
-
-  watch: {
   },
 
   methods: {
@@ -168,33 +163,6 @@ export default {
      */
     getFullMasterName(row, column, cellValue) {
       return `${cellValue.first_name} ${cellValue.last_name}`;
-    },
-
-    /**
-     * Set services to names
-     *
-     * @param {[Object]} services Services list
-     * @return {[Object]} Services names list
-     */
-    setServicesToNames(services) {
-      return (services || [])
-        .map((serviceId) => this.services
-          .find((service) => service.id === serviceId)?.name) || [];
-    },
-
-    /**
-     * Divide services
-     *
-     * @param {Object} row Current table row
-     * @param {Object} column Current table column
-     * @param {Object} cellValue Current cell value
-     *
-     * @return {String} Services names
-     */
-    divideServices(row, column, cellValue) {
-      const formattedServicesToNames = this.setServicesToNames(cellValue.services);
-
-      return formattedServicesToNames.join(', ');
     },
 
     /**
@@ -256,8 +224,8 @@ export default {
       return {
         date: row.date,
         time: this.$formatDate(row.date, 'HH:mm'),
-        master: row.master.id,
-        services: row.master.services,
+        master: row.id,
+        services: row.services,
       };
     },
   },

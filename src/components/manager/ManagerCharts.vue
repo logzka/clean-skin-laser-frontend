@@ -48,6 +48,7 @@
 </template>
 
 <script>
+/** https://vue-chartjs.org */
 import { Bar, Pie } from 'vue-chartjs';
 import {
   Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement,

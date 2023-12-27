@@ -43,26 +43,26 @@
                 )
                 template(#header)
                     .card-header.flex.space-between.align-center
-                        h2 {{ master.master.first_name }} {{ master.master.last_name }}
+                        h2 {{ master.first_name }}&nbsp;{{ master.last_name }}
                         AppointmentButton(
-                          :dataForDialog="{ master: master.master.id }"
+                          :dataForDialog="{ master: master.id }"
                           buttonType="primary"
                           )
                 .box-card__content.flex.space-between
                     .flex
                       .box-card__content-photo(
-                        :style="{ backgroundImage: `url('${master.master.photo}')` }"
+                        :style="{ backgroundImage: `url('/img/${master.photo}')` }"
                         )
                       .box-card__content-text
                           h3 Процедуры
-                          | {{ divideServices(master.master.services) }}
+                          span {{ $formatServices(master.services, servicesMap) }}
                           h3 Квалификация
-                          | {{ master.master.skills }}
+                          | {{ master.skills }}
                           h3 Опыт работы
-                          | {{ master.master.experience }}
+                          | {{ master.experience }}
                           h3 Ближайшие свободные места
                           div(
-                              v-for="date in master.master.closest_free_dates"
+                              v-for="date in master.closest_free_dates"
                               :key="date"
                               ) {{ $formatDate(date, 'DD.MM') }} на {{ $formatDate(date, 'HH:mm') }}
                     .box-card__content-connect
@@ -75,16 +75,16 @@
 <script>
 export default {
   computed: {
-    masters() {
-      return this.$store.getters.masters || null;
+    activeMasters() {
+      return this.$store.getters.activeMasters || null;
     },
 
     preMasters() {
-      return this.masters || [];
+      return this.activeMasters || [];
     },
 
-    services() {
-      return this.$store.getters.services || [];
+    servicesMap() {
+      return this.$store.getters.servicesMap || {};
     },
   },
 
@@ -107,35 +107,6 @@ export default {
 
       this.loadingMasters = false;
     }, 1000);
-  },
-
-  methods: {
-    /**
-     * Set services to names
-     *
-     * @param {[Object]} services Services list
-     * @return {[Object]} Services names list
-     */
-    setServicesToNames(services) {
-      return (services || [])
-        .map((serviceId) => this.services
-          .find((service) => service.id === serviceId)?.name) || [];
-    },
-
-    /**
-     * Divide services
-     *
-     * @param {Object} row Current table row
-     * @param {Object} column Current table column
-     * @param {Object} cellValue Current cell value
-     *
-     * @return {String} Services names
-     */
-    divideServices(masterServices) {
-      const formattedServicesToNames = this.setServicesToNames(masterServices);
-
-      return formattedServicesToNames.join(', ');
-    },
   },
 };
 </script>

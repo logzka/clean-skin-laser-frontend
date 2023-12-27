@@ -1,5 +1,5 @@
 <template lang="pug">
-.manager-side-menu.h-100
+.manager-side-menu.h-100.p-sticky.t-0
     .manager-side-menu__inner.h-100
         el-menu.el-menu-vertical-demo(
             :default-active="$route.path"
@@ -82,7 +82,7 @@ export default {
   }),
 
   created() {
-    this.isCollapse = localStorage.getItem('ManagerSidebarCollapse') === '1';
+    this.isCollapse = localStorage.getItem('SidebarCollapse') === '1';
   },
 
   methods: {
@@ -90,7 +90,7 @@ export default {
 
   watch: {
     isCollapse(value) {
-      localStorage.setItem('ManagerSidebarCollapse', value ? '1' : '0');
+      localStorage.setItem('SidebarCollapse', value ? '1' : '0');
     },
   },
 };

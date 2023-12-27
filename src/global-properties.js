@@ -1,11 +1,15 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import dayjs from 'dayjs';
 
-function formatDate(date, format) {
-  return dayjs(date || new Date())
-    .format(format || 'DD.MM.YYYY');
-}
+const formatDate = (date, format) => dayjs(date || new Date())
+  .format(format || 'DD.MM.YYYY');
+
+const formatDateTime = (date) => formatDate(date, 'DD.MM.YYYY HH:mm');
+
+const formatServices = (servicesIds, servicesMap, sep = ', ') => (servicesIds || [])
+  .map((id) => servicesMap[id]?.name || '').join(sep);
 
 export default {
   formatDate,
+  formatDateTime,
+  formatServices,
 };

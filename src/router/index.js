@@ -11,6 +11,7 @@ import HomeMainContacts from '../components/home/home-main/HomeMainContacts.vue'
 // ADMIN
 import AdminBanner from '../components/admin/AdminBanner.vue';
 import AdminStocks from '../components/admin/AdminStocks.vue';
+import AdminMasters from '../components/admin/AdminMasters.vue';
 
 // MANAGER
 import ManagerCharts from '../components/manager/ManagerCharts.vue';
@@ -67,6 +68,10 @@ const routes = [
         path: '/admin/stocks',
         name: 'AdminStocks',
         component: AdminStocks,
+      }, {
+        path: '/admin/masters',
+        name: 'AdminMasters',
+        component: AdminMasters,
       },
     ],
   },

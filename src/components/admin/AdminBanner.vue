@@ -4,8 +4,8 @@
     h3(v-if="!bannerForm.id") Новый баннер
     h3(v-else) Редактирование баннера
 
-    .w-100.flex.space-between
-      .admin-banner__inner-form.w-100
+    .w-100.flex.gap-2.space-between.f-wrap
+      .admin-banner__inner-form.flex-grow
         admin-banner-form(
           @update-active-banner="updateActiveBanner"
         )
@@ -84,7 +84,6 @@ export default {
       margin 0 0 40px
       color #9684A3
     &-form
-      margin-right 5%
       .el-form
         &-item
           &__label

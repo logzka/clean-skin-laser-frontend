@@ -2,7 +2,6 @@
 el-table(
   :data="preBanners"
   stripe
-  height="calc(100vh - 148px)"
   :row-style="tableRowStyle"
   )
   el-table-column(
@@ -24,8 +23,8 @@ el-table(
   el-table-column(
     prop="services"
     label="Услуги"
-    width="280"
-    :formatter="(row, column, cellValue) => getCellServices(cellValue)"
+    min-width="140"
+    :formatter="(row, column, cellValue) => $formatServices(cellValue, servicesMap)"
     )
   el-table-column(width="160")
     template(v-slot="row")
@@ -80,9 +79,8 @@ export default {
   }),
 
   mounted() {
-    this.$store.dispatch('setLoadingAdminBanner', true);
-
     if (!this.banners) {
+      this.$store.dispatch('setLoadingAdminBanner', true);
       setTimeout(() => {
         this.$store.dispatch('getBanners');
         this.$store.dispatch('setLoadingAdminBanner', false);
@@ -148,11 +146,6 @@ export default {
       return row.active ? {
         background: 'var(--el-color-success-light-9)',
       } : {};
-    },
-
-    getCellServices(cellValue) {
-      return cellValue.length ? cellValue
-        .map((value) => this.servicesMap[value].name).join(', ') : '--';
     },
   },
 };

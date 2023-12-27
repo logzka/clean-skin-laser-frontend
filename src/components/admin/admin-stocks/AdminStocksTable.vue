@@ -2,7 +2,6 @@
 el-table(
   :data="preStocks"
   stripe
-  height="calc(100vh - 148px)"
   )
   el-table-column(
     prop="active"
@@ -27,7 +26,7 @@ el-table(
   el-table-column(
     prop="name"
     label="Название"
-    width="320"
+    width="280"
     :formatter="(row, column, cellValue) => cellValue.length ? cellValue : '--'"
     )
   el-table-column(width="160" label="Фон")

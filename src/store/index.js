@@ -13,6 +13,7 @@ import price from './price';
 /** Admin */
 import bannerStocks from './admin/banner';
 import adminStocks from './admin/stocks';
+import adminMasters from './admin/masters';
 
 /** Manager */
 import managerCharts from './manager/charts';
@@ -32,6 +33,7 @@ export default createStore({
 
     bannerStocks,
     adminStocks,
+    adminMasters,
 
     managerCharts,
   },

@@ -1,5 +1,5 @@
 <template lang="pug">
-.admin-side-menu.h-100
+.admin-side-menu.h-100.p-sticky.t-0
     .admin-side-menu__inner.h-100
         el-menu.el-menu-vertical-demo(
             :default-active="$route.path"
@@ -31,7 +31,7 @@
                     span Акции
             el-menu-item(
                 index="/admin/masters"
-                disabled
+                @click="$router.push({ name: 'AdminMasters' })"
                 )
                 el-icon
                     User
@@ -84,14 +84,21 @@
 <script>
 export default {
   computed: {
+    isCollapse: {
+      get() {
+        return this.$store.getters.isCollapse || false;
+      },
+      set(flag) {
+        this.$store.dispatch('setIsCollapse', flag);
+      },
+    },
   },
 
   data: () => ({
-    isCollapse: false,
   }),
 
   created() {
-    this.isCollapse = localStorage.getItem('AdminSidebarCollapse') === '1';
+    this.isCollapse = localStorage.getItem('SidebarCollapse') === '1';
   },
 
   methods: {
@@ -99,7 +106,7 @@ export default {
 
   watch: {
     isCollapse(value) {
-      localStorage.setItem('AdminSidebarCollapse', value ? '1' : '0');
+      localStorage.setItem('SidebarCollapse', value ? '1' : '0');
     },
   },
 };

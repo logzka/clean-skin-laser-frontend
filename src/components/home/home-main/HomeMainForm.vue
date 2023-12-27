@@ -56,10 +56,10 @@
         )
         el-option(
           v-for="master in preMasters"
-          :key="master.master.id"
+          :key="master.id"
 
           :label="getFullMasterName(master)"
-          :value="master.master.id"
+          :value="master.id"
           )
 
     el-form-item(
@@ -182,7 +182,7 @@ export default {
 
     selectedMaster() {
       return this.preMasters
-        .find((master) => master.master.id === this.ruleForm.master) || null;
+        .find((master) => master.id === this.ruleForm.master) || null;
     },
 
     masterServices() {
@@ -263,7 +263,7 @@ export default {
      *
      * @param {Object} master Current master Data
      */
-    getFullMasterName({ master }) {
+    getFullMasterName(master) {
       return `${master.first_name} ${master.last_name}`;
     },
 

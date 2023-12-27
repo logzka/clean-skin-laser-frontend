@@ -19,6 +19,8 @@ import AppointmentButton from './global-components/AppointmentButton.vue';
 const app = createApp(App);
 
 app.config.globalProperties.$formatDate = globalProperties.formatDate;
+app.config.globalProperties.$formatDateTime = globalProperties.formatDateTime;
+app.config.globalProperties.$formatServices = globalProperties.formatServices;
 
 /** Vue Emitter (for no $on, $off directives in Vue 3)
  * https://v3.ru.vuejs.org/ru/guide/migration/events-api.html#события-корневого-компонента
