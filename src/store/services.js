@@ -29,7 +29,7 @@ export default {
         // const services = await this.$axios.get('/getServices', { params });
 
         commit('SET_SERVICES', services);
-        await commit('SET_SERVICES_MAP', services);
+        commit('SET_SERVICES_MAP', services);
       } catch (error) {
         throw Error(error);
       }

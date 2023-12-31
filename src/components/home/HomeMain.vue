@@ -122,7 +122,7 @@ export default {
   &-inner
     &__view
       &-main
-        margin-bottom 200px
+        margin-bottom 120px
         gap 3em
         &_banner
           height 360px
@@ -151,11 +151,8 @@ export default {
           &-buttons
             &__appointment-button
               margin-right 20px
-
-      &-advantages
-        margin-bottom 150px
       &-stocks
-        margin-bottom 200px
+        margin-bottom 120px
 
       &-form
         padding 4px
@@ -167,7 +164,7 @@ export default {
 </style>
 
 <style lang="stylus" scoped>
-/** Less then 1500 screen px */
+/** Less than 1500 screen px */
 @media screen and (max-width: 1500px)
   .home-main
     &-inner
@@ -176,7 +173,7 @@ export default {
           &_banner
             height 300px
 
-/** Less then 1300 screen px */
+/** Less than 1300 screen px */
 @media screen and (max-width: 1300px)
   .home-main
     &-inner
@@ -185,7 +182,7 @@ export default {
           &_banner
             height 240px
 
-/** Less then 1100 screen px */
+/** Less than 1100 screen px */
 @media screen and (max-width: 1100px)
   .home-main
     width 100%
@@ -195,7 +192,7 @@ export default {
           &_banner
             height 280px
 
-/** Less then 900 screen px */
+/** Less than 900 screen px */
 @media screen and (max-width: 900px)
   .home-main
     &-inner
@@ -204,13 +201,13 @@ export default {
           &_banner
             height 220px
 
-/** Less then 800 screen px */
+/** Less than 800 screen px */
 @media screen and (max-width: 800px)
   .home-main
     &-inner
       &__view
         &-main
-          margin-bottom 100px
+          margin-bottom 0px
           &_content
             // margin-bottom 32px
             height 300px
@@ -228,8 +225,6 @@ export default {
           &_inner
             padding 20px
 
-        &-advantages
-          margin-bottom 50px
         &-stocks
           margin-bottom 100px
 </style>

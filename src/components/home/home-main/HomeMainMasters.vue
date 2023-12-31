@@ -1,75 +1,53 @@
 <template lang="pug">
-.home-main-masters
-    .home-main-masters__inner.flex.f-col
-        .home-main-masters__inner-skeleton(
-            v-if="loadingMasters"
-            )
-            el-card.box-card.w-100(
-                v-for="item in 2"
-                )
-                el-skeleton(
-                    :loading="loadingMasters"
-                    animated
+.home-main-masters(v-loading="loadingMasters")
+  .home-main-masters__inner.flex.f-col
+    .home-main-masters__inner-cards
+      el-card.box-card(
+        v-for="master in preMasters"
+        shadow="hover"
+        )
+        template(#header)
+            .card-header.flex.space-between.align-center.f-wrap.gap
+              h2 {{ master.first_name }}&nbsp;{{ master.last_name }}
+              .flex.align-center.gap
+                AppointmentButton(
+                  :dataForDialog="{ master: master.id }"
+                  buttonType="primary"
+                  )
+                a(
+                  href="https://instagram.com/"
+                  target="_blank"
+                  style="width: 24px;height: 24px;"
+                  )
+                  img(
+                    src="img/instagram.svg"
+                    alt="instagram ссылка"
                     )
-                    template(#template)
-                        .flex
-                            el-skeleton-item(
-                                variant="image"
-                                style="width: 200px; height: auto;margin-right: 25px;"
-                                )
-                            .w-100.flex.f-col
-                                el-skeleton-item(
-                                    variant="h3"
-                                    style="width: 215px;margin-bottom: 50px;"
-                                    )
-                                el-skeleton-item(
-                                    variant="text"
-                                    style="width: 400px;margin-bottom: 15px;"
-                                    )
-                                el-skeleton-item(
-                                    variant="text"
-                                    style="width: 125px;margin-bottom: 15px;"
-                                    )
-                                el-skeleton-item(
-                                    variant="text"
-                                    style="width: 510px;"
-                                    )
-        .home-main-masters__inner-cards(
-            v-else
-            )
-            el-card.box-card.w-100(
-                v-for="master in preMasters"
-                shadow="hover"
-                )
-                template(#header)
-                    .card-header.flex.space-between.align-center
-                        h2 {{ master.first_name }}&nbsp;{{ master.last_name }}
-                        AppointmentButton(
-                          :dataForDialog="{ master: master.id }"
-                          buttonType="primary"
-                          )
-                .box-card__content.flex.space-between
-                    .flex
-                      .box-card__content-photo(
-                        :style="{ backgroundImage: `url('/img/${master.photo}')` }"
-                        )
-                      .box-card__content-text
-                          h3 Процедуры
-                          span {{ $formatServices(master.services, servicesMap) }}
-                          h3 Квалификация
-                          | {{ master.skills }}
-                          h3 Опыт работы
-                          | {{ master.experience }}
-                          h3 Ближайшие свободные места
-                          div(
-                              v-for="date in master.closest_free_dates"
-                              :key="date"
-                              ) {{ $formatDate(date, 'DD.MM') }} на {{ $formatDate(date, 'HH:mm') }}
-                    .box-card__content-connect
-                        a.el-button(
-                            href="https://instagram.com/"
-                            target="_blank"
-                            ) Перейти в Инстаграм
+        .box-card__content.flex.space-between.f-wrap.gap-2
+          .flex.f-wrap.gap-2
+            .box-card__content-photo(
+              :style="{ backgroundImage: `url('/img/${master.photo}')` }"
+              )
+            .box-card__content-text
+              //- h3 Процедуры
+              //- p.m0.p0 {{ $formatServices(master.services, servicesMap) }}
+              .flex.gap.f-wrap
+                el-tag(
+                  v-for="service in master.services"
+                  :key="service"
+                  type="success"
+                  effect="light"
+                  size="large"
+                  ) {{ $formatServices([service], servicesMap) }}
+              h3 Квалификация
+              p.m0.p0 {{ master.skills }}
+              h3 Опыт работы
+              p.m0.p0 {{ master.experience }}
+              h3 Ближайшие свободные места
+              div(
+                v-for="date in master.closest_free_dates"
+                :key="date"
+                ) {{ $formatDate(date, 'DD.MM') }} на {{ $formatDate(date, 'HH:mm') }}
 </template>
 
 <script>
@@ -78,11 +56,9 @@ export default {
     activeMasters() {
       return this.$store.getters.activeMasters || null;
     },
-
     preMasters() {
       return this.activeMasters || [];
     },
-
     servicesMap() {
       return this.$store.getters.servicesMap || {};
     },
@@ -90,7 +66,6 @@ export default {
 
   data: () => ({
     loadingMasters: false,
-
     params: {
       dateFree: null,
       timeFree: null,
@@ -113,25 +88,41 @@ export default {
 
 <style lang="stylus" scoped>
 .home-main-masters
-    &__inner
-        .box-card
-            margin-bottom 25px
-            &:last-child
-                margin-bottom 0
-            h2, h3
-                color #9684A3
-                margin-bottom 5px
+  &__inner
+    .box-card
+      margin-bottom 25px
+      &:last-child
+        margin-bottom 0
+      h2, h3
+        color #9684A3
+        margin-bottom 5px
 
-            &__content
-                &-photo
-                    min-width 400px
-                    height auto
-                    margin-right 25px
-                    border-radius 2px
-                    background-size cover
-                    background-repeat no-repeat
-                    background-position center
-                &-text
-                    h3:first-child
-                        margin-top 0
+      &__content
+        &-photo
+          min-width calc(20em - 20px)
+          min-height 20em
+          height auto
+          border-radius 2px
+          background-size cover
+          background-repeat no-repeat
+          background-position top center
+        &-text
+          h3:first-child
+            margin-top 0
+</style>
+
+<style lang="stylus" scoped>
+/** More than 901 screen px */
+@media screen and (min-width: 901px)
+  .box-card
+    &__content
+      &-text
+        max-width calc(100% - 20em - 20px)
+
+/** Less than 900 screen px */
+@media screen and (max-width: 900px)
+  .box-card
+    &__content
+      &-photo
+        flex-grow 1
 </style>

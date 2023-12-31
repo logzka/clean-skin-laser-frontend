@@ -39,8 +39,9 @@ export default {
 
 <style lang="stylus" scoped>
 .home-main-view-advantages
+    margin-bottom 120px
     &_item
-        margin 0 5% 50px
+        margin 0 5% 0
         &-icon
             font-size 48px
             margin-bottom 20px
@@ -48,4 +49,13 @@ export default {
         &-text
             .lasertech-link
                 color rgb(234,89,76)
+</style>
+
+<style lang="stylus" scoped>
+/** Less than 800 screen px */
+@media screen and (max-width: 800px)
+    .home-main-view-advantages
+        margin-bottom 50px
+        &_item
+            margin-bottom 30px
 </style>
