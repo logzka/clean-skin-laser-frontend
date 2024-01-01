@@ -53,12 +53,19 @@ export default {
 </style>
 
 <style lang="stylus" scoped>
-/** Less then 800 screen px */
+/** Less than 800 screen px */
 @media screen and (max-width: 800px)
   .home-footer
     &-inner
       &__copy
       &__menu
       &__social-info
+        margin-bottom 50px
+
+/** Less than 528 screen px */
+@media screen and (max-width: 528px)
+  .home-footer
+    &-inner
+      .home-main-contacts-general
         margin-bottom 50px
 </style>

@@ -137,7 +137,7 @@
         aria-label="comment"
         )
 
-    el-form-item(align="end")
+    el-form-item.m0(align="end")
       el-button(
         size="large"
         type="primary"
@@ -298,8 +298,6 @@ export default {
     &-item
       &:not(&:last-child)
         margin-bottom 30px
-      &:last-child
-        margin-top 15px
       &__label
         font-weight bold
 </style>

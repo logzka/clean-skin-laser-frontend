@@ -52,6 +52,9 @@ el-main.home-main(v-loading="loading")
         .home-main-inner__view-form_inner
           home-main-form
 
+      section.home-main-inner__view-brands
+        home-main-view-brands
+
     router-view(v-else)
 
     home-main-dialog(
@@ -63,6 +66,7 @@ el-main.home-main(v-loading="loading")
 import HomeMainViewBanner from './home-main/home-main-view/HomeMainViewBanner.vue';
 import HomeMainViewAdvantages from './home-main/home-main-view/HomeMainViewAdvantages.vue';
 import HomeMainViewStocks from './home-main/home-main-view/HomeMainViewStocks.vue';
+import HomeMainViewBrands from './home-main/home-main-view/HomeMainViewBrands.vue';
 
 import HomeMainForm from './home-main/HomeMainForm.vue';
 import HomeMainDialog from './home-main/HomeMainDialog.vue';
@@ -72,6 +76,7 @@ export default {
     HomeMainViewBanner,
     HomeMainViewAdvantages,
     HomeMainViewStocks,
+    HomeMainViewBrands,
 
     HomeMainForm,
     HomeMainDialog,
@@ -158,6 +163,7 @@ export default {
         padding 4px
         border-radius 2px
         background-image -webkit-linear-gradient(45deg, #2CC990, #9684A3)
+        margin-bottom 140px
         &_inner
           background #fff
           padding 60px 100px

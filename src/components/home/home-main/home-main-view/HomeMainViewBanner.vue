@@ -81,7 +81,7 @@ export default {
 </style>
 
 <style lang="stylus" scoped>
-/** Less then 800 screen px */
+/** Less than 800 screen px */
 @media screen and (max-width: 800px)
   .home-main-view-banner
     video
